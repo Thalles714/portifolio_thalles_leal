@@ -1,17 +1,6 @@
-# Local working material not required by the published portfolio
-.agents/
-.codex/
-assets/brand/
-assets/templates/
-base/
-briefing/
-fotos/catalogo.json
-fotos/README.md
-fotos/generated/
-fotos/originais/
-fotos/referencias/
-identidade-visual.md
-text.txt
-videos/
-
-.vercel
+.DS_Store
+Thumbs.db
+.server-*.log
+node_modules/
+.vercel/
+dist/
