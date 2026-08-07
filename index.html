@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#050506">
+  <script>document.documentElement.classList.add("js");</script>
   <meta name="description" content="Thalles Leal is a front-end and full-stack developer building clear, responsive and carefully crafted digital products.">
   <title>Thalles Leal — Front-end & Full-stack Developer</title>
   <link rel="preload" href="assets/fonts/archivo-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -1018,11 +1019,7 @@
     }
 
     .profile-prologue-stage::after {
-      right: var(--page-pad);
-      bottom: 1.2rem;
-      left: var(--page-pad);
-      height: 1px;
-      background: rgba(241, 240, 235, 0.14);
+      display: none;
     }
 
     .profile-wave {
@@ -1064,10 +1061,10 @@
     .profile-prologue-copy {
       position: relative;
       z-index: 2;
-      width: min(100%, 90rem);
+      width: min(100%, 76rem);
       color: var(--paper);
       font-family: var(--profile-text);
-      mix-blend-mode: difference;
+      mix-blend-mode: normal;
       pointer-events: none;
     }
 
@@ -1080,9 +1077,9 @@
     }
 
     .profile-prologue-title {
-      max-width: 10.8ch;
+      max-width: 9.2ch;
       margin: 0;
-      font-size: clamp(4.4rem, 10.5vw, 11rem);
+      font-size: clamp(4rem, 9vw, 9rem);
       font-weight: 560;
       letter-spacing: -0.072em;
       line-height: 0.86;
@@ -1101,6 +1098,16 @@
       will-change: transform;
     }
 
+    .js .profile-prologue-eyebrow,
+    .js .profile-prologue-line {
+      opacity: 0;
+    }
+
+    .js.prologue-static .profile-prologue-eyebrow,
+    .js.prologue-static .profile-prologue-line {
+      opacity: 1;
+    }
+
     .profile-prologue-line:nth-child(2) {
       margin-left: clamp(2rem, 10vw, 10rem);
       color: rgba(241, 240, 235, 0.58);
@@ -1114,6 +1121,23 @@
       overflow: clip;
       isolation: isolate;
       background: var(--abyss);
+    }
+
+    .about::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.2;
+      background:
+        repeating-linear-gradient(92deg, transparent 0 4.8rem, rgba(201, 223, 236, 0.12) 4.9rem, transparent 5rem),
+        radial-gradient(ellipse at 50% 45%, rgba(117, 110, 136, 0.13), transparent 66%);
+      animation: profile-field-drift 18s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes profile-field-drift {
+      to { transform: translate3d(-5rem, 0, 0); }
     }
 
     .profile-stage {
@@ -1177,10 +1201,12 @@
       width: var(--profile-card-width);
       aspect-ratio: 4 / 5;
       overflow: hidden;
-      border: 1px solid rgba(241, 240, 235, 0.12);
+      border: 1px solid rgba(241, 240, 235, 0.28);
+      border-radius: 16px;
       background: #09090a;
-      opacity: 0.42;
-      transform: scale(0.965);
+      box-shadow: inset 0 0 0 1px rgba(241, 240, 235, 0.06), 0 1.8rem 4rem rgba(0, 0, 0, 0.28);
+      opacity: 0.58;
+      transform: scale(0.94);
       transform-origin: center;
       transition: opacity 650ms var(--ease-out), transform 900ms var(--ease-out), border-color 500ms ease;
     }
@@ -1196,6 +1222,9 @@
     .profile-slide--unknown {
       --title-ink-start: #f4f3ef;
       --title-ink-end: #aaaeb6;
+      --card-panel: #d9d8d3;
+      --card-ink: #111214;
+      --card-muted: rgba(17, 18, 20, 0.64);
     }
 
     .profile-slide--unknown::after {
@@ -1205,6 +1234,9 @@
     .profile-slide--structure {
       --title-ink-start: #111214;
       --title-ink-end: #f4f3ef;
+      --card-panel: #c8c7c3;
+      --card-ink: #111214;
+      --card-muted: rgba(17, 18, 20, 0.64);
     }
 
     .profile-slide--structure::after {
@@ -1214,6 +1246,9 @@
     .profile-slide--network {
       --title-ink-start: #f4f3ef;
       --title-ink-end: #8f969f;
+      --card-panel: #17191d;
+      --card-ink: #f4f3ef;
+      --card-muted: rgba(244, 243, 239, 0.62);
     }
 
     .profile-slide--network::after {
@@ -1223,6 +1258,9 @@
     .profile-slide--contrast {
       --title-ink-start: #0b0c0e;
       --title-ink-end: #f4f3ef;
+      --card-panel: #9e8669;
+      --card-ink: #0b0c0e;
+      --card-muted: rgba(11, 12, 14, 0.64);
     }
 
     .profile-slide--contrast::after {
@@ -1232,6 +1270,9 @@
     .profile-slide--horizon {
       --title-ink-start: #f4f3ef;
       --title-ink-end: #aeb3bb;
+      --card-panel: #c7cec1;
+      --card-ink: #111214;
+      --card-muted: rgba(17, 18, 20, 0.64);
     }
 
     .profile-slide--horizon::after {
@@ -1239,7 +1280,7 @@
     }
 
     .profile-slide.is-active {
-      border-color: rgba(241, 240, 235, 0.28);
+      border-color: rgba(241, 240, 235, 0.52);
       opacity: 1;
       transform: scale(1);
     }
@@ -1256,13 +1297,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(1) contrast(1.04);
-      transform: scale(1.035);
+      filter: grayscale(1) contrast(1.06) brightness(0.78);
+      transform: scale(1.06);
       transition: transform 1.3s var(--ease-out), filter 900ms var(--ease-out);
     }
 
     .profile-slide.is-active .profile-media img {
-      filter: grayscale(1) contrast(1);
+      filter: grayscale(0.08) contrast(1.02) brightness(0.92);
       transform: scale(1);
     }
 
@@ -1295,11 +1336,35 @@
       text-align: right;
     }
 
+    .profile-slide .profile-copy {
+      inset: auto 0 0;
+      height: 42%;
+      width: auto;
+      padding: clamp(1.05rem, 2.2vw, 1.55rem);
+      align-items: flex-start;
+      justify-content: flex-start;
+      color: var(--card-ink);
+      background: var(--card-panel);
+      text-align: left;
+      transform: translate3d(0, 101%, 0);
+      transition: transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    .profile-slide.is-active .profile-copy {
+      transform: translate3d(0, 0, 0);
+    }
+
     .profile-index {
       margin: 0 0 clamp(0.8rem, 2vh, 1.35rem);
       color: rgba(241, 240, 235, 0.58);
       font: 450 0.64rem/1 var(--profile-utility);
       letter-spacing: 0.11em;
+    }
+
+    .profile-slide .profile-index {
+      margin-bottom: 0.72rem;
+      color: var(--card-muted);
     }
 
     .profile-slide--structure .profile-index,
@@ -1311,10 +1376,10 @@
       max-width: 9.5ch;
       margin: 0;
       font-family: var(--profile-text);
-      font-size: clamp(2.35rem, 4vw, 4.35rem);
+      font-size: clamp(1.8rem, 2.6vw, 2.8rem);
       font-weight: 590;
       letter-spacing: -0.058em;
-      line-height: 0.94;
+      line-height: 0.96;
       text-wrap: balance;
     }
 
@@ -1327,6 +1392,12 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .profile-slide .profile-title .profile-reveal {
+      color: var(--card-ink);
+      background: none;
+      -webkit-text-fill-color: currentColor;
     }
 
     .profile-body {
@@ -1343,8 +1414,20 @@
       line-height: 1.5;
     }
 
+    .profile-slide .profile-body {
+      max-width: 31rem;
+      margin-top: 0.72rem;
+      padding: 0;
+      border: 0;
+      color: var(--card-muted);
+      background: none;
+      backdrop-filter: none;
+      font-size: clamp(0.72rem, 0.9vw, 0.86rem);
+      line-height: 1.42;
+    }
+
     .profile-slide--horizon .profile-body {
-      margin-left: auto;
+      margin-left: 0;
     }
 
     .profile-location {
@@ -1376,9 +1459,9 @@
       transform: translate3d(0, 0, 0);
     }
 
-    .motion-ready .profile-slide.is-active .profile-reveal--title { transition-delay: 90ms; }
-    .motion-ready .profile-slide.is-active .profile-reveal--body { transition-delay: 190ms; }
-    .motion-ready .profile-slide.is-active .profile-reveal--meta { transition-delay: 280ms; }
+    .motion-ready .profile-slide.is-active .profile-reveal--meta { transition-delay: 390ms; }
+    .motion-ready .profile-slide.is-active .profile-reveal--title { transition-delay: 500ms; }
+    .motion-ready .profile-slide.is-active .profile-reveal--body { transition-delay: 640ms; }
 
     .profile-controls {
       position: relative;
@@ -3049,6 +3132,22 @@
         font-size: clamp(0.78rem, 3vw, 0.92rem);
       }
 
+      .profile-slide .profile-copy {
+        inset: auto 0 0;
+        height: 42%;
+        width: auto;
+        padding: 1rem;
+      }
+
+      .profile-slide .profile-title {
+        font-size: clamp(1.65rem, 7.2vw, 2.35rem);
+      }
+
+      .profile-slide .profile-body {
+        margin-top: 0.6rem;
+        font-size: 0.74rem;
+      }
+
       .profile-controls {
         width: 100%;
         padding-top: 1rem;
@@ -3397,6 +3496,11 @@
         filter: none;
       }
 
+      .js .profile-prologue-eyebrow,
+      .js .profile-prologue-line {
+        opacity: 1;
+      }
+
       .profile-prologue {
         height: auto;
         min-height: 100svh;
@@ -3426,6 +3530,10 @@
 
       .dotted-surface canvas {
         transition: none;
+      }
+
+      .about::before {
+        animation: none;
       }
     }
   </style>
@@ -4609,8 +4717,8 @@
           profileSlide1Code: "Observe",
           profileSlide1Title1: "I follow",
           profileSlide1Title2: "the question.",
-          profileSlide1Title: "I begin with the unknown.",
-          profileSlide1Body: "Curiosity comes before certainty. I stay with the question long enough to understand what the product truly needs.",
+          profileSlide1Title: "I begin with the question.",
+          profileSlide1Body: "Curiosity comes first. I understand what truly needs to be built.",
           profileSlide1Tag1: "Curiosity",
           profileSlide1Tag2: "Learning",
           profileSlide1Tag3: "Evolution",
@@ -4622,8 +4730,8 @@
           profileSlide2Code: "Understand",
           profileSlide2Title1: "The problem",
           profileSlide2Title2: "comes first.",
-          profileSlide2Title: "Structure gives ideas somewhere to live.",
-          profileSlide2Body: "Visual clarity, intuitive use and maintainable engineering work as one system—not separate finishing layers.",
+          profileSlide2Title: "Structure shapes ideas.",
+          profileSlide2Body: "Clarity, intuitive use and maintainable code work as one system.",
           profileSlide2Tag1: "Context",
           profileSlide2Tag2: "Need",
           profileSlide2Tag3: "Direction",
@@ -4635,8 +4743,8 @@
           profileSlide3Code: "Connect",
           profileSlide3Title1: "Interface meets",
           profileSlide3Title2: "infrastructure.",
-          profileSlide3Title: "Good work is made of relationships.",
-          profileSlide3Body: "I connect interface, performance and dependable code so each decision supports the next.",
+          profileSlide3Title: "Everything must connect.",
+          profileSlide3Body: "Interface, performance and dependable code move in one direction.",
           profileLocation: "Brazil / Remote",
           profileSlide3Tag1: "Design",
           profileSlide3Tag2: "Performance",
@@ -4649,8 +4757,8 @@
           profileSlide4Code: "Refine",
           profileSlide4Title1: "Details hold",
           profileSlide4Title2: "the whole.",
-          profileSlide4Title: "Another rhythm keeps the work human.",
-          profileSlide4Body: "Music, guitar and voice sharpen my sense of timing, contrast and pause—qualities I also bring to digital experiences.",
+          profileSlide4Title: "Rhythm is a tool.",
+          profileSlide4Body: "Music taught me timing, contrast and pause.",
           profileSlide4Tag1: "Clarity",
           profileSlide4Tag2: "Quality",
           profileSlide4Tag3: "Continuity",
@@ -4662,8 +4770,8 @@
           profileSlide5Code: "Listen",
           profileSlide5Title1: "Code is not my",
           profileSlide5Title2: "only language.",
-          profileSlide5Title: "Built in Brazil. Open to the world.",
-          profileSlide5Body: "Available for remote collaboration with national and international teams, ready to contribute, learn and evolve together.",
+          profileSlide5Title: "From Brazil to the world.",
+          profileSlide5Body: "Available for remote teams, ready to contribute and grow.",
           profileSlide5Tag1: "Guitar",
           profileSlide5Tag2: "Voice",
           profileSlide5Tag3: "Spotify",
@@ -4830,8 +4938,8 @@
           profileSlide1Code: "Observar",
           profileSlide1Title1: "Eu sigo",
           profileSlide1Title2: "a pergunta.",
-          profileSlide1Title: "Eu começo pelo desconhecido.",
-          profileSlide1Body: "A curiosidade vem antes da certeza. Permaneço com a pergunta até compreender o que o produto realmente precisa.",
+          profileSlide1Title: "Começo pela pergunta.",
+          profileSlide1Body: "A curiosidade vem primeiro. Entendo o que realmente precisa ser construído.",
           profileSlide1Tag1: "Curiosidade",
           profileSlide1Tag2: "Aprendizado",
           profileSlide1Tag3: "Evolução",
@@ -4843,8 +4951,8 @@
           profileSlide2Code: "Entender",
           profileSlide2Title1: "O problema",
           profileSlide2Title2: "vem primeiro.",
-          profileSlide2Title: "A estrutura dá lugar às ideias.",
-          profileSlide2Body: "Clareza visual, uso intuitivo e engenharia sustentável funcionam como um sistema — não como camadas separadas de acabamento.",
+          profileSlide2Title: "Estrutura dá forma às ideias.",
+          profileSlide2Body: "Clareza, uso intuitivo e código sustentável funcionam como um sistema.",
           profileSlide2Tag1: "Contexto",
           profileSlide2Tag2: "Necessidade",
           profileSlide2Tag3: "Direção",
@@ -4856,8 +4964,8 @@
           profileSlide3Code: "Conectar",
           profileSlide3Title1: "Interface encontra",
           profileSlide3Title2: "estrutura.",
-          profileSlide3Title: "Bom trabalho nasce de relações.",
-          profileSlide3Body: "Conecto interface, performance e código confiável para que cada decisão sustente a próxima.",
+          profileSlide3Title: "Tudo precisa conversar.",
+          profileSlide3Body: "Interface, performance e código confiável seguem na mesma direção.",
           profileLocation: "Brasil / Remoto",
           profileSlide3Tag1: "Design",
           profileSlide3Tag2: "Performance",
@@ -4870,8 +4978,8 @@
           profileSlide4Code: "Refinar",
           profileSlide4Title1: "O detalhe sustenta",
           profileSlide4Title2: "o todo.",
-          profileSlide4Title: "Outro ritmo mantém o trabalho humano.",
-          profileSlide4Body: "Música, guitarra e voz refinam meu senso de tempo, contraste e pausa — qualidades que também levo às experiências digitais.",
+          profileSlide4Title: "Ritmo também é ferramenta.",
+          profileSlide4Body: "A música me ensinou tempo, contraste e pausa.",
           profileSlide4Tag1: "Clareza",
           profileSlide4Tag2: "Qualidade",
           profileSlide4Tag3: "Continuidade",
@@ -4883,8 +4991,8 @@
           profileSlide5Code: "Escutar",
           profileSlide5Title1: "Código não é minha",
           profileSlide5Title2: "única linguagem.",
-          profileSlide5Title: "Construído no Brasil. Aberto ao mundo.",
-          profileSlide5Body: "Disponível para colaboração remota com equipes nacionais e internacionais, pronto para contribuir, aprender e evoluir em conjunto.",
+          profileSlide5Title: "Do Brasil para o mundo.",
+          profileSlide5Body: "Disponível para equipes remotas, pronto para contribuir e evoluir.",
           profileSlide5Tag1: "Guitarra",
           profileSlide5Tag2: "Voz",
           profileSlide5Tag3: "Spotify",
@@ -5210,6 +5318,8 @@
       var profileRefreshFrame = 0;
       var profileLastTrackWidth = 0;
       var profileActiveIndex = 0;
+      var profileTargetIndex = 0;
+      var profileNavigationLockUntil = 0;
       var profileDesktopMode = false;
       var signalSection = document.querySelector("#signal");
       var signalMapCard = document.querySelector("#signal-map-card");
@@ -5287,6 +5397,7 @@
           }
         });
         setProfileActive(nearestIndex);
+        if (Date.now() > profileNavigationLockUntil) profileTargetIndex = nearestIndex;
       }
 
       function onProfileNativeScroll() {
@@ -5297,6 +5408,8 @@
       function goToProfile(index) {
         if (!profileSlides.length) return;
         var targetIndex = clamp(Math.round(index), 0, profileSlides.length - 1);
+        profileTargetIndex = targetIndex;
+        profileNavigationLockUntil = Date.now() + 900;
         setProfileActive(targetIndex);
 
         if (profileDesktopMode && profileTween && profileTween.scrollTrigger) {
@@ -5372,7 +5485,9 @@
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: function (self) {
-              setProfileActive(self.progress * (profileSlides.length - 1));
+              var nextIndex = Math.round(self.progress * (profileSlides.length - 1));
+              setProfileActive(nextIndex);
+              if (Date.now() > profileNavigationLockUntil) profileTargetIndex = nextIndex;
             },
             onRefresh: function (self) {
               setProfileActive(self.progress * (profileSlides.length - 1));
@@ -5384,6 +5499,7 @@
       }
 
       function destroyProfilePrologueMotion() {
+        root.classList.remove("prologue-static");
         if (profilePrologueTween) {
           if (profilePrologueTween.scrollTrigger) profilePrologueTween.scrollTrigger.kill(true);
           profilePrologueTween.kill();
@@ -5399,7 +5515,10 @@
       function configureProfilePrologueMotion() {
         destroyProfilePrologueMotion();
         if (!profilePrologue || !profileBreakpoint.matches || reducedMotion ||
-          !window.gsap || !window.ScrollTrigger) return;
+          !window.gsap || !window.ScrollTrigger) {
+          root.classList.add("prologue-static");
+          return;
+        }
 
         window.gsap.registerPlugin(window.ScrollTrigger);
         profilePrologueTween = window.gsap.timeline({
@@ -5578,23 +5697,24 @@
       function onProfileKeydown(event) {
         if (event.key === "ArrowLeft") {
           event.preventDefault();
-          goToProfile(profileActiveIndex - 1);
+          goToProfile(profileTargetIndex - 1);
         } else if (event.key === "ArrowRight") {
           event.preventDefault();
-          goToProfile(profileActiveIndex + 1);
+          goToProfile(profileTargetIndex + 1);
         }
       }
 
       function setupProfile() {
         if (!profileSlides.length || !profileViewport) return;
         setProfileActive(0);
+        profileTargetIndex = 0;
         profileViewport.addEventListener("scroll", onProfileNativeScroll, { passive: true });
         profileViewport.addEventListener("keydown", onProfileKeydown);
         profilePrevious.addEventListener("click", function () {
-          goToProfile(profileActiveIndex - 1);
+          goToProfile(profileTargetIndex - 1);
         });
         profileNext.addEventListener("click", function () {
-          goToProfile(profileActiveIndex + 1);
+          goToProfile(profileTargetIndex + 1);
         });
         profileDots.forEach(function (dot) {
           dot.addEventListener("click", function () {
