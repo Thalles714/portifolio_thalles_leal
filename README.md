@@ -1,6 +1,6 @@
 # Portfólio — Thalles Leal
 
-Portfólio estático bilíngue, responsivo e pronto para publicação. Não há etapa de build nem dependências locais obrigatórias.
+Portfólio - bilíngue e responsivo.
 
 ## Estrutura
 
