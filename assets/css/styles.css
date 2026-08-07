@@ -1010,6 +1010,18 @@
       background: transparent;
     }
 
+    .profile-prologue::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: clamp(9rem, 22vh, 15rem);
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 6, 0.72) 54%, var(--abyss) 100%);
+    }
+
     .profile-prologue-stage {
       position: sticky;
       top: 0;
@@ -1784,7 +1796,7 @@
       position: relative;
       display: block;
       min-height: auto;
-      margin-top: clamp(-9rem, -9vw, -6rem);
+      margin-top: clamp(-12rem, -13vw, -8rem);
       padding: clamp(5.25rem, 14vh, 9rem) var(--page-pad);
       overflow: hidden;
       border-top: 0;
@@ -1854,9 +1866,7 @@
       position: absolute;
       inset: 0;
       z-index: -2;
-      background:
-        radial-gradient(circle at 15% 18%, rgba(117, 110, 136, 0.13), transparent 30%),
-        linear-gradient(180deg, rgba(5, 5, 6, 0.76), rgba(11, 11, 13, 0.92));
+      background: var(--abyss);
     }
 
     .signal-section::after {
@@ -2835,10 +2845,12 @@
     }
 
     .contact-bottom {
-      grid-template-areas: "links signoff";
+      grid-template-areas:
+        "links"
+        "signoff";
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
-      gap: clamp(3rem, 8vw, 9rem);
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
       align-items: center;
       width: 100vw;
       margin-left: calc(50% - 50vw);
