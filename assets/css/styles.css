@@ -851,6 +851,10 @@
       bottom: 0;
     }
 
+    .scene-stop--profile-exit {
+      bottom: min(40svh, 24rem);
+    }
+
     .section-shell {
       width: min(100%, 96rem);
       margin-inline: auto;
@@ -1021,7 +1025,7 @@
       position: relative;
       height: 135svh;
       min-height: 0;
-      overflow: hidden;
+      overflow: clip;
       scroll-margin-top: var(--header-h);
       isolation: isolate;
       background: transparent;
@@ -2573,11 +2577,28 @@
     }
 
     .project-coverflow {
-      width: min(100%, 78rem);
+      position: relative;
+      width: 100%;
       margin: clamp(3rem, 8vh, 6rem) auto 0;
-      padding: clamp(1rem, 2vw, 1.5rem);
-      border: 1px solid rgba(201, 223, 236, 0.16);
-      background: linear-gradient(145deg, rgba(201, 223, 236, 0.055), rgba(5, 5, 6, 0.5));
+      padding: clamp(1rem, 2vw, 1.5rem) 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(201, 223, 236, 0.16);
+      border-bottom: 1px solid rgba(201, 223, 236, 0.16);
+      isolation: isolate;
+    }
+
+    .project-coverflow::before {
+      content: "";
+      position: absolute;
+      inset: 2.8rem 0 auto 50%;
+      z-index: -1;
+      width: min(68vw, 52rem);
+      aspect-ratio: 2.2 / 1;
+      border: 1px solid rgba(201, 223, 236, 0.055);
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(117, 110, 136, 0.08), transparent 66%);
+      transform: translateX(-50%);
+      pointer-events: none;
     }
 
     .project-coverflow__heading,
@@ -2595,13 +2616,14 @@
     .project-coverflow__count { color: var(--ice); font-variant-numeric: tabular-nums; }
 
     .project-coverflow__viewport {
-      margin: 1.25rem -1rem 0;
-      padding: clamp(2rem, 5vw, 4rem) 0;
+      margin: 1.25rem 0 0;
+      padding: clamp(1.8rem, 4vw, 3rem) 0 0;
       overflow: hidden;
       outline: none;
-      perspective: 1000px;
+      perspective: 1200px;
       touch-action: pan-y;
       cursor: grab;
+      user-select: none;
     }
 
     .project-coverflow__viewport:active { cursor: grabbing; }
@@ -2609,7 +2631,7 @@
 
     .project-coverflow__stage {
       position: relative;
-      height: clamp(17rem, 27vw, 23rem);
+      height: clamp(10rem, 17vw, 13.75rem);
       transform-style: preserve-3d;
     }
 
@@ -2618,42 +2640,141 @@
       top: 0;
       left: 50%;
       display: flex;
-      width: clamp(14.5rem, 28vw, 22rem);
-      height: 100%;
-      padding: 1rem;
+      width: clamp(9.5rem, 17vw, 13.75rem);
+      aspect-ratio: 1;
+      padding: 0;
       flex-direction: column;
       overflow: hidden;
-      border: 1px solid rgba(241, 240, 235, 0.16);
+      border: 1px solid rgba(241, 240, 235, 0.13);
+      border-radius: 0.72rem;
       background: #090b0d;
       color: var(--paper);
       text-decoration: none;
       transform-origin: center center;
-      transition: transform 520ms var(--ease-out), opacity 300ms ease, border-color 300ms ease;
+      -webkit-user-drag: none;
+      box-shadow: 0 1.35rem 3.5rem rgba(0, 0, 0, 0.42);
+      transition:
+        transform 430ms var(--ease-out),
+        opacity 260ms ease,
+        filter 260ms ease,
+        border-color 260ms ease,
+        box-shadow 360ms var(--ease-out);
       will-change: transform, opacity;
     }
 
-    .project-coverflow__card.is-selected { border-color: rgba(201, 223, 236, 0.68); }
-    .project-coverflow__visual { position: absolute; inset: 0; overflow: hidden; opacity: 0.54; }
-    .project-coverflow__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, #090b0d 8%, rgba(9, 11, 13, 0.08) 70%); }
-    .project-coverflow__visual img { width: 100%; height: 100%; object-fit: cover; }
+    .project-coverflow__card.is-selected {
+      border-color: rgba(201, 223, 236, 0.72);
+      box-shadow: 0 1.8rem 5rem rgba(0, 0, 0, 0.54), 0 0 0 1px rgba(201, 223, 236, 0.12);
+    }
+
+    .project-coverflow__card:not(.is-selected) { filter: saturate(0.62) brightness(0.62); }
+    .project-coverflow.is-dragging .project-coverflow__card { transition: none; }
+    .project-coverflow.is-motion-managed .project-coverflow__card {
+      transition: filter 180ms ease, border-color 180ms ease, box-shadow 260ms var(--ease-out);
+    }
+    .project-coverflow__visual { position: absolute; inset: 0; overflow: hidden; opacity: 1; }
+
+    /* Case-study detail now lives on its own route; the home stays a fast project index. */
+    .projects > .project {
+      display: none;
+    }
+    .project-coverflow__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(241, 240, 235, 0.08), transparent 34% 76%, rgba(5, 5, 6, 0.3)); }
+    .project-coverflow__visual img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
     .project-coverflow__visual span { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(201, 223, 236, 0.72); font: 600 clamp(3rem, 8vw, 6rem)/1 var(--display); letter-spacing: -0.08em; }
     .project-coverflow__card--voe .project-coverflow__visual { background: radial-gradient(circle at 30% 25%, rgba(143, 203, 224, 0.35), transparent 23%), linear-gradient(135deg, #16272a, #060708 70%); }
     .project-coverflow__card--solar .project-coverflow__visual { background: radial-gradient(circle at 74% 22%, rgba(220, 174, 87, 0.42), transparent 25%), linear-gradient(135deg, #2b2211, #060708 68%); }
     .project-coverflow__card--catalog .project-coverflow__visual { background: radial-gradient(circle at 25% 20%, rgba(135, 188, 120, 0.38), transparent 20%), linear-gradient(135deg, #122016, #060708 70%); }
-    .project-coverflow__index, .project-coverflow__type, .project-coverflow__action { position: relative; z-index: 1; font: 500 0.58rem/1 var(--utility); letter-spacing: 0.12em; text-transform: uppercase; }
-    .project-coverflow__index { color: var(--ice); }
-    .project-coverflow__type { margin-top: auto; color: var(--paper-muted); }
-    .project-coverflow__card strong { position: relative; z-index: 1; margin: 0.55rem 0 1.1rem; font: 600 clamp(1.55rem, 2.5vw, 2.35rem)/0.95 var(--display); letter-spacing: -0.055em; }
-    .project-coverflow__action { color: var(--ice); }
-    .project-coverflow__hint { margin: 0; color: var(--paper-muted); font-size: 0.74rem; line-height: 1.4; }
-    .project-coverflow__controls { margin-top: 1rem; }
-    .project-coverflow__control, .project-coverflow__pagination button { border: 1px solid rgba(201, 223, 236, 0.22); background: transparent; color: var(--ice); }
-    .project-coverflow__control { width: 2.4rem; height: 2.4rem; font-size: 1.1rem; cursor: pointer; }
-    .project-coverflow__pagination { display: flex; gap: 0.5rem; }
-    .project-coverflow__pagination button { width: 0.44rem; height: 0.44rem; padding: 0; border-radius: 50%; cursor: pointer; transition: transform 180ms ease, background 180ms ease; }
-    .project-coverflow__pagination button[aria-current="true"] { background: var(--ice); transform: scale(1.45); }
+    .project-coverflow__index,
+    .project-coverflow__type,
+    .project-coverflow__action,
+    .project-coverflow__card strong { display: none; }
 
-    @media (hover: hover) and (pointer: fine) { .project-coverflow__card.is-selected:hover { border-color: var(--ice); } }
+    .project-coverflow__selection {
+      display: grid;
+      width: min(100%, 28rem);
+      justify-items: center;
+      margin: clamp(1.15rem, 2vw, 1.55rem) auto 0;
+      text-align: center;
+    }
+
+    .project-coverflow__identity p {
+      margin: 0 0 0.38rem;
+      color: var(--paper-muted);
+      font: 500 0.58rem/1 var(--utility);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .project-coverflow__identity h3 {
+      margin: 0;
+      color: var(--paper);
+      font: 600 clamp(1.25rem, 2.1vw, 1.72rem)/1 var(--display);
+      letter-spacing: -0.045em;
+    }
+
+    .project-coverflow__meta {
+      display: grid;
+      width: min(100%, 19.5rem);
+      gap: 0.46rem;
+      margin: 1rem 0 0;
+    }
+
+    .project-coverflow__meta div {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .project-coverflow__meta dt,
+    .project-coverflow__meta dd {
+      margin: 0;
+      font: 500 0.62rem/1.3 var(--utility);
+      letter-spacing: 0.045em;
+    }
+
+    .project-coverflow__meta dt { color: rgba(241, 240, 235, 0.48); text-align: left; }
+    .project-coverflow__meta dd { color: var(--paper); text-align: right; }
+
+    .project-coverflow__open {
+      display: inline-flex;
+      min-height: 2.55rem;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.9rem;
+      padding: 0 0.9rem;
+      border: 1px solid rgba(201, 223, 236, 0.22);
+      color: var(--ice);
+      font: 600 0.62rem/1 var(--utility);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .project-coverflow__hint {
+      width: 100%;
+      margin: clamp(1.35rem, 2.2vw, 1.8rem) 0 0;
+      color: var(--paper-muted);
+      font-size: 0.74rem;
+      line-height: 1.4;
+    }
+
+    .project-coverflow__controls { margin-top: 0.9rem; }
+    .project-coverflow__control { border: 1px solid rgba(201, 223, 236, 0.22); background: transparent; color: var(--ice); }
+    .project-coverflow__control { width: 3rem; height: 3rem; font-size: 1.1rem; cursor: pointer; transition: opacity 200ms ease, border-color 200ms ease, background 200ms ease; }
+    .project-coverflow__control:active { transform: scale(0.94); }
+    .project-coverflow__control:disabled { opacity: 0.22; cursor: default; }
+    .project-coverflow__pagination { display: flex; align-items: center; gap: 0.05rem; }
+    .project-coverflow__pagination button { position: relative; width: 1.8rem; height: 2.3rem; padding: 0; border: 0; background: transparent; cursor: pointer; }
+    .project-coverflow__pagination button::before { content: ""; position: absolute; top: 50%; left: 50%; width: 0.38rem; height: 0.38rem; border: 1px solid rgba(201, 223, 236, 0.34); border-radius: 999px; transform: translate(-50%, -50%); transition: width 240ms var(--ease-out), background 180ms ease, border-color 180ms ease; }
+    .project-coverflow__pagination button[aria-current="true"]::before { width: 1.2rem; border-color: var(--ice); background: var(--ice); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .project-coverflow__card:hover { border-color: rgba(201, 223, 236, 0.58); }
+      .project-coverflow__open:hover,
+      .project-coverflow__open:focus-visible,
+      .project-coverflow__control:not(:disabled):hover { border-color: var(--ice); background: rgba(201, 223, 236, 0.08); }
+    }
 
     .project {
       position: relative;
@@ -3087,8 +3208,10 @@
       min-height: 125svh;
     }
 
-    .experience::before {
-      background: linear-gradient(90deg, rgba(5, 5, 6, 0.88), rgba(5, 5, 6, 0.48) 58%, rgba(5, 5, 6, 0.14));
+    .experience::before,
+    .availability::before,
+    .contact::before {
+      background: rgba(5, 5, 6, 0.42);
     }
 
     .experience-grid {
@@ -3168,10 +3291,6 @@
       min-height: 82svh;
     }
 
-    .availability::before {
-      background: linear-gradient(to bottom, rgba(5, 5, 6, 0.62), rgba(5, 5, 6, 0.24));
-    }
-
     .availability-card {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
@@ -3229,12 +3348,6 @@
       min-height: 100svh;
       padding-bottom: 0;
       align-items: stretch;
-    }
-
-    .contact::before {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 6, 0.86) 0 37%, rgba(5, 5, 6, 0.42) 67%, rgba(5, 5, 6, 0.1)),
-        linear-gradient(to top, rgba(5, 5, 6, 0.78), transparent 60%);
     }
 
     .contact-shell {
@@ -4128,6 +4241,38 @@
         grid-column: 1;
       }
 
+      .project-coverflow {
+        margin-top: 3rem;
+        padding-top: 1rem;
+      }
+
+      .project-coverflow::before {
+        top: 3.6rem;
+        width: 150vw;
+      }
+
+      .project-coverflow__viewport {
+        margin-top: 0.75rem;
+        padding-top: 1.6rem;
+      }
+
+      .project-coverflow__stage {
+        height: min(58vw, 13rem);
+      }
+
+      .project-coverflow__card {
+        width: min(58vw, 13rem);
+        border-radius: 0.62rem;
+      }
+
+      .project-coverflow__selection {
+        margin-top: 1.6rem;
+      }
+
+      .project-coverflow__hint {
+        max-width: 28rem;
+      }
+
       .project {
         min-height: 96svh;
         padding: 6.5rem var(--page-pad) 5rem;
@@ -4570,6 +4715,11 @@
         transition: none;
         transform: none;
         opacity: 1;
+      }
+
+      .project-coverflow__card,
+      .project-coverflow__pagination button::before {
+        transition: none;
       }
 
       .pill::before,

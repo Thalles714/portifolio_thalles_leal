@@ -263,6 +263,17 @@
           </div>
         </div>
       </div>
+      <span
+        class="scene-stop scene-stop--profile-exit"
+        data-scene
+        data-scene-x="0"
+        data-scene-y="3"
+        data-scene-scale="0.94"
+        data-scene-opacity="0"
+        data-scene-rotation="0"
+        data-scene-rings="0"
+        aria-hidden="true"
+      ></span>
     </section>
 
     <section
@@ -686,9 +697,9 @@
       data-scene-x="-8"
       data-scene-y="3"
       data-scene-scale="0.94"
-      data-scene-opacity="0.1"
+      data-scene-opacity="0"
       data-scene-rotation="-3"
-      data-scene-rings="0.12"
+      data-scene-rings="0"
       aria-labelledby="signal-title"
     >
       <div class="profile-handoff" aria-hidden="true">
@@ -874,33 +885,57 @@
             </div>
             <div class="project-coverflow__viewport" tabindex="0" aria-describedby="project-navigator-hint">
               <div class="project-coverflow__stage">
-                <a class="project-coverflow__card project-coverflow__card--workflow" href="https://workflow-app-lac.vercel.app" target="_blank" rel="noopener noreferrer" data-project-cover>
-                  <div class="project-coverflow__visual"><img src="assets/images/projects/workflow/central-desktop.png" alt="Workflow operations dashboard" data-i18n-alt="workflowShotPrimaryAlt" width="1440" height="1000" loading="lazy" decoding="async"></div>
+                <a class="project-coverflow__card project-coverflow__card--workflow" href="/projects/workflow/" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/workflow/workflow-coverflow-v1.webp" alt="Workflow operational hierarchy converging on a critical blocked task" data-i18n-alt="workflowCoverAlt" width="1254" height="1254" loading="lazy" decoding="async"></div>
                   <span class="project-coverflow__index">01</span><span class="project-coverflow__type">SaaS / Operations</span><strong>Workflow</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
                 </a>
-                <a class="project-coverflow__card project-coverflow__card--nitido" href="https://nitido.thallestleal.workers.dev" target="_blank" rel="noopener noreferrer" data-project-cover>
-                  <div class="project-coverflow__visual"><img src="assets/images/projects/nitido/home-desktop.png" alt="Nítido financial privacy interface" data-i18n-alt="nitidoShotPrimaryAlt" width="1440" height="1000" loading="lazy" decoding="async"></div>
+                <a class="project-coverflow__card project-coverflow__card--nitido" href="/projects/nitido/" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/nitido/nitido-coverflow-v1.webp" alt="Nítido transforms a private financial statement into clear local insights" data-i18n-alt="nitidoCoverAlt" width="1254" height="1254" loading="lazy" decoding="async"></div>
                   <span class="project-coverflow__index">02</span><span class="project-coverflow__type">PWA / Local-first</span><strong>Nítido</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
                 </a>
                 <a class="project-coverflow__card project-coverflow__card--voe" href="http://clinicavoealto.com.br/" target="_blank" rel="noopener noreferrer" data-project-cover>
-                  <div class="project-coverflow__visual" aria-hidden="true"><span>V</span></div>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/covers/voealto-coverflow-final.webp" alt="Clínica Voe Alto visual identity with its hummingbird symbol and multidisciplinary care interface." width="2048" height="2048" loading="lazy" decoding="async"></div>
                   <span class="project-coverflow__index">03</span><span class="project-coverflow__type">Web / Healthcare</span><strong>Clínica Voe Alto</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
                 </a>
                 <a class="project-coverflow__card project-coverflow__card--solar" href="https://www.goodsollar.com.br/" target="_blank" rel="noopener noreferrer" data-project-cover>
-                  <div class="project-coverflow__visual" aria-hidden="true"><span>GS</span></div>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/covers/good-sollar.png" alt="Solar energy interface concept for Good Sollar." width="1254" height="1254" loading="lazy" decoding="async"></div>
                   <span class="project-coverflow__index">04</span><span class="project-coverflow__type">Web / Solar energy</span><strong>Good Sollar</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
                 </a>
                 <a class="project-coverflow__card project-coverflow__card--catalog" href="https://piaui-catalogo.vercel.app/" target="_blank" rel="noopener noreferrer" data-project-cover>
-                  <div class="project-coverflow__visual" aria-hidden="true"><span>CP</span></div>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/covers/catalogo-corretores.png" alt="Agricultural equipment catalog interface concept." width="1254" height="1254" loading="lazy" decoding="async"></div>
                   <span class="project-coverflow__index">05</span><span class="project-coverflow__type">Platform / Commerce</span><strong>Catálogo para Corretores</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
                 </a>
               </div>
             </div>
+            <div class="project-coverflow__selection" aria-live="polite" aria-atomic="true">
+              <div class="project-coverflow__identity">
+                <p data-project-active-category>SaaS / Operations</p>
+                <h3 data-project-active-title>Workflow</h3>
+              </div>
+              <dl class="project-coverflow__meta">
+                <div>
+                  <dt data-i18n="projectNavigatorFormat">Format</dt>
+                  <dd data-project-active-format>SaaS</dd>
+                </div>
+                <div>
+                  <dt data-i18n="projectNavigatorFocus">Focus</dt>
+                  <dd data-project-active-focus>Operations</dd>
+                </div>
+                <div>
+                  <dt data-i18n="projectNavigatorRoute">Route</dt>
+                  <dd data-project-active-route>Case study</dd>
+                </div>
+              </dl>
+              <a class="project-coverflow__open" href="/projects/workflow/" data-project-open>
+                <span data-i18n="projectNavigatorAction">Open project</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
             <p class="project-coverflow__hint" id="project-navigator-hint" data-i18n="projectNavigatorHint">Drag, use the arrows or choose a signal to inspect a project.</p>
             <div class="project-coverflow__controls">
-              <button type="button" class="project-coverflow__control" data-project-previous data-i18n-aria-label="projectNavigatorPrevious" aria-label="Previous project">←</button>
+              <button type="button" class="project-coverflow__control" data-project-previous data-i18n-aria-label="projectNavigatorPrevious" aria-label="Previous project" disabled>←</button>
               <div class="project-coverflow__pagination" aria-label="Choose a project" data-i18n-aria-label="projectNavigatorPagination"></div>
-              <button type="button" class="project-coverflow__control" data-project-next data-i18n-aria-label="projectNavigatorNext" aria-label="Next project">→</button>
+              <button type="button" class="project-coverflow__control" data-project-next data-i18n-aria-label="projectNavigatorNext" aria-label="Next project" disabled>→</button>
             </div>
           </section>
         </div>
@@ -1289,11 +1324,11 @@
       id="experience"
       tabindex="-1"
       data-scene
-      data-scene-x="27"
-      data-scene-y="-6"
-      data-scene-scale="0.9"
+      data-scene-x="15"
+      data-scene-y="-4"
+      data-scene-scale="0.96"
       data-scene-opacity="0.38"
-      data-scene-rotation="12"
+      data-scene-rotation="-6"
       data-scene-rings="0.42"
       aria-labelledby="experience-title"
     >
@@ -1340,12 +1375,12 @@
       id="availability"
       tabindex="-1"
       data-scene
-      data-scene-x="-5"
-      data-scene-y="8"
+      data-scene-x="-8"
+      data-scene-y="5"
       data-scene-scale="1.08"
-      data-scene-opacity="0.46"
-      data-scene-rotation="-6"
-      data-scene-rings="0.56"
+      data-scene-opacity="0.38"
+      data-scene-rotation="4"
+      data-scene-rings="0.42"
       aria-labelledby="availability-title"
     >
       <div class="section-shell">
@@ -1384,12 +1419,12 @@
       id="contact"
       tabindex="-1"
       data-scene
-      data-scene-x="34"
-      data-scene-y="12"
-      data-scene-scale="1.35"
-      data-scene-opacity="0.34"
-      data-scene-rotation="8"
-      data-scene-rings="0.32"
+      data-scene-x="13"
+      data-scene-y="1"
+      data-scene-scale="1"
+      data-scene-opacity="0.38"
+      data-scene-rotation="11"
+      data-scene-rings="0.42"
       aria-labelledby="contact-title"
     >
       <div class="section-shell contact-shell">
@@ -1470,12 +1505,12 @@
     id="footer"
     tabindex="-1"
     data-scene
-    data-scene-x="38"
-    data-scene-y="14"
-    data-scene-scale="2.25"
-    data-scene-opacity="0.16"
-    data-scene-rotation="24"
-    data-scene-rings="0.22"
+    data-scene-x="-5"
+    data-scene-y="7"
+    data-scene-scale="1.12"
+    data-scene-opacity="0.38"
+    data-scene-rotation="18"
+    data-scene-rings="0.42"
     aria-labelledby="footer-title"
   >
     <div class="dotted-surface" id="dotted-surface" aria-hidden="true">

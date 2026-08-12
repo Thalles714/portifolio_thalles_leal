@@ -178,11 +178,14 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
           projectsIntro: "Five projects tracing my progression from responsive websites to multi-tenant and local-first products with automated testing.",
           projectNavigatorLabel: "Project navigator",
           projectNavigatorKicker: "Choose a transmission",
-          projectNavigatorAction: "Open live project ↗",
+          projectNavigatorAction: "Open project",
           projectNavigatorHint: "Drag, use the arrows or choose a signal to inspect a project.",
           projectNavigatorPrevious: "Previous project",
           projectNavigatorNext: "Next project",
           projectNavigatorPagination: "Choose a project",
+          projectNavigatorFormat: "Format",
+          projectNavigatorFocus: "Focus",
+          projectNavigatorRoute: "Route",
           nitidoRole: "Front-end product project / Private local-first financial analysis",
           nitidoDescription: "I built a responsive PWA that imports CSV and OFX statements, processes financial data on-device and turns transactions into explainable dashboards without requiring an account.",
           nitidoResult: "Private offline-capable analysis, 24 automated tests, E2E coverage and CI/CD to Cloudflare Workers",
@@ -206,6 +209,7 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
           workflowDecision: "I connected clients, projects, deliverables and tasks in one hierarchy, then surfaced the next decision instead of another generic dashboard.",
           workflowEvidence: "The public read-only demo lets anyone follow a critical signal to its blocked task using safe, entirely fictitious data.",
           workflowCaption: "From the attention center to the blocked task, the operational context remains visible across desktop and mobile.",
+          workflowCoverAlt: "Workflow operational hierarchy converging on a critical blocked task.",
           workflowShotPrimaryAlt: "Workflow operations dashboard highlighting a blocked landing page and the next decision.",
           workflowShotSecondaryAlt: "Workflow task detail preserving the client, project and next-step context.",
           workflowShotMobileAlt: "Workflow attention center adapted to a mobile viewport.",
@@ -213,6 +217,7 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
           nitidoDecision: "I designed an account-free flow that processes CSV and OFX files on-device and turns raw transactions into plain-language categories and insights.",
           nitidoEvidence: "The built-in example converts 148 fictitious transactions into a private, responsive report that remains available offline.",
           nitidoCaption: "Privacy is part of the interface: the product explains where processing happens while keeping the financial reading direct.",
+          nitidoCoverAlt: "Nítido transforms a private financial statement into clear local insights.",
           nitidoShotPrimaryAlt: "Nítido home screen explaining local financial processing without connecting a bank account.",
           nitidoShotSecondaryAlt: "Nítido category analysis showing spending totals and proportional bars.",
           nitidoShotMobileAlt: "Nítido financial summary adapted to a mobile viewport.",
@@ -447,11 +452,14 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
           projectsIntro: "Cinco projetos que registram minha evolução de sites responsivos a produtos multi-tenant e local-first com testes automatizados.",
           projectNavigatorLabel: "Navegador de projetos",
           projectNavigatorKicker: "Escolha uma transmissão",
-          projectNavigatorAction: "Abrir projeto publicado ↗",
+          projectNavigatorAction: "Abrir projeto",
           projectNavigatorHint: "Arraste, use as setas ou escolha um sinal para conhecer um projeto.",
           projectNavigatorPrevious: "Projeto anterior",
           projectNavigatorNext: "Próximo projeto",
           projectNavigatorPagination: "Escolher um projeto",
+          projectNavigatorFormat: "Formato",
+          projectNavigatorFocus: "Foco",
+          projectNavigatorRoute: "Rota",
           nitidoRole: "Projeto autoral front-end / Análise financeira privada e local-first",
           nitidoDescription: "Construí uma PWA responsiva que importa extratos CSV e OFX, processa os dados financeiros no dispositivo e transforma transações em dashboards explicáveis sem exigir cadastro.",
           nitidoResult: "Análise privada com modo offline, 24 testes automatizados, cobertura E2E e CI/CD no Cloudflare Workers",
@@ -475,6 +483,7 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
           workflowDecision: "Conectei clientes, projetos, entregas e tarefas em uma única hierarquia e destaquei a próxima decisão, em vez de criar outro dashboard genérico.",
           workflowEvidence: "A demo pública somente leitura permite seguir um sinal crítico até a tarefa bloqueada usando dados seguros e inteiramente fictícios.",
           workflowCaption: "Da central de atenção à tarefa bloqueada, o contexto operacional permanece visível no desktop e no mobile.",
+          workflowCoverAlt: "Hierarquia operacional do Workflow convergindo para uma tarefa crítica bloqueada.",
           workflowShotPrimaryAlt: "Painel operacional do Workflow destacando uma landing page bloqueada e a próxima decisão.",
           workflowShotSecondaryAlt: "Detalhe de tarefa do Workflow preservando o contexto de cliente, projeto e próximo passo.",
           workflowShotMobileAlt: "Central de atenção do Workflow adaptada a uma tela mobile.",
@@ -482,6 +491,7 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
           nitidoDecision: "Criei um fluxo sem cadastro que processa arquivos CSV e OFX no dispositivo e transforma transações brutas em categorias e insights em linguagem direta.",
           nitidoEvidence: "O exemplo integrado transforma 148 transações fictícias em um relatório privado, responsivo e disponível offline.",
           nitidoCaption: "Privacidade faz parte da interface: o produto explica onde o processamento acontece sem complicar a leitura financeira.",
+          nitidoCoverAlt: "O Nítido transforma um extrato financeiro privado em informações locais e claras.",
           nitidoShotPrimaryAlt: "Tela inicial do Nítido explicando o processamento financeiro local sem conectar uma conta bancária.",
           nitidoShotSecondaryAlt: "Análise de categorias do Nítido mostrando totais de gastos e barras proporcionais.",
           nitidoShotMobileAlt: "Resumo financeiro do Nítido adaptado a uma tela mobile.",
@@ -1452,12 +1462,13 @@ import("../../src/modules/signal-motion").then(function (signalMotionModule) {
       function measureScene() {
         viewportWidth = window.innerWidth;
         viewportHeight = window.innerHeight;
-        sceneStops = sceneElements.map(function (element) {
+        sceneStops = sceneElements.flatMap(function (element) {
           var rect = element.getBoundingClientRect();
-          return {
+          if (rect.width === 0 && rect.height === 0) return [];
+          return [{
             point: rect.top + window.scrollY + rect.height * 0.5,
             state: readSceneState(element)
-          };
+          }];
         }).sort(function (a, b) {
           return a.point - b.point;
         });

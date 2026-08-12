@@ -27,7 +27,11 @@ export function createOrbitalScene(): OrbitalSceneController | null {
   function state(node: HTMLElement): State { return { x: Number(node.dataset.sceneX || 0), y: Number(node.dataset.sceneY || 0), scale: Number(node.dataset.sceneScale || 1), opacity: Number(node.dataset.sceneOpacity || 1), rotation: Number(node.dataset.sceneRotation || 0), rings: Number(node.dataset.sceneRings || 0.6) }; }
   function measure(): void {
     width = window.innerWidth; height = window.innerHeight;
-    stops = nodes.map((node) => { const rect = node.getBoundingClientRect(); return { point: rect.top + window.scrollY + rect.height * 0.5, state: state(node) }; }).sort((a, b) => a.point - b.point);
+    stops = nodes.flatMap((node) => {
+      const rect = node.getBoundingClientRect();
+      if (rect.width === 0 && rect.height === 0) return [];
+      return [{ point: rect.top + window.scrollY + rect.height * 0.5, state: state(node) }];
+    }).sort((a, b) => a.point - b.point);
     const rect = hero.getBoundingClientRect(); const top = rect.top + window.scrollY;
     exitStart = top + rect.height * 0.58; exitEnd = top + rect.height * 0.94;
   }

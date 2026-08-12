@@ -1,0 +1,33 @@
+@import url("/assets/css/styles.css");
+
+.case-page { min-height: 100svh; background: radial-gradient(circle at 82% 12%, rgba(117,110,136,.18), transparent 28rem), #050506; }
+.case-page::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.28; background:linear-gradient(rgba(201,223,236,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(201,223,236,.055) 1px,transparent 1px); background-size:4rem 4rem; mask-image:radial-gradient(circle at 65% 22%,black,transparent 62%); }
+.case-shell { position:relative; z-index:1; width: min(1200px, calc(100% - 2rem)); margin: 0 auto; padding: 1.25rem 0 5rem; }
+.case-nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: .5rem 0 4rem; color:var(--paper-muted); font:600 .67rem var(--utility); letter-spacing:.12em; text-transform:uppercase; }
+.case-nav a { color:var(--paper); }
+.case-hero { display:grid; grid-template-columns: minmax(0,1.05fr) minmax(18rem,.95fr); gap:clamp(2rem,7vw,7rem); align-items:end; min-height:72svh; padding-bottom:clamp(3rem,8vw,7rem); border-bottom:1px solid var(--line); }
+.case-kicker { margin:0 0 1.25rem; color:var(--ice); font:600 .67rem var(--utility); letter-spacing:.15em; text-transform:uppercase; }
+.case-title { margin:0; max-width:8ch; font:600 clamp(4rem,11vw,9rem)/.82 var(--display); letter-spacing:-.08em; }
+.case-title span { color:var(--ice); }
+.case-summary { margin:0; max-width:40ch; color:var(--paper-muted); font:400 clamp(1.1rem,2vw,1.45rem)/1.45 var(--text); }
+.case-actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; }
+.case-action { display:inline-flex; align-items:center; min-height:3rem; padding:0 1rem; border:1px solid var(--line); font:600 .68rem var(--utility); letter-spacing:.09em; text-transform:uppercase; }
+.case-action--primary { background:var(--paper); border-color:var(--paper); color:var(--ink); }
+.case-image { position:relative; overflow:hidden; border:1px solid var(--line); background:#111116; box-shadow:0 2rem 5rem rgba(0,0,0,.34); transform:perspective(1200px) rotateX(2deg) rotateY(-3deg); }
+.case-image::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(110deg,rgba(255,255,255,.16),transparent 27% 72%,rgba(201,223,236,.08)); mix-blend-mode:screen; }
+.case-image img { width:100%; height:auto; }
+.case-ledger { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:clamp(3rem,9vw,8rem) 0; background:var(--line); border:1px solid var(--line); }
+.case-ledger div { min-height:8rem; padding:1.25rem; background:#0a0a0c; }
+.case-ledger dt { margin-bottom:.7rem; color:var(--paper-muted); font:600 .62rem var(--utility); letter-spacing:.12em; text-transform:uppercase; }
+.case-ledger dd { margin:0; font:500 .92rem/1.45 var(--text); }
+.case-section { display:grid; grid-template-columns: .55fr 1.45fr; gap:2rem; padding:clamp(3rem,7vw,6rem) 0; border-top:1px solid var(--line); transition:background 300ms ease; }
+.case-section:hover { background:linear-gradient(90deg,rgba(201,223,236,.035),transparent 55%); }
+.case-section h2 { margin:0; color:var(--ice); font:600 .68rem var(--utility); letter-spacing:.14em; text-transform:uppercase; }
+.case-section p { max-width:62ch; margin:0; color:var(--paper-muted); font:400 1.05rem/1.65 var(--text); }
+.case-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+.case-grid figure { margin:0; overflow:hidden; border:1px solid var(--line); background:#111116; transition:transform 450ms var(--ease-out), border-color 300ms ease; }
+.case-grid figure:hover { border-color:rgba(201,223,236,.55); transform:translateY(-.45rem); }
+.case-grid img { width:100%; height:auto; }
+.case-grid figcaption { padding:.75rem 1rem; color:var(--paper-muted); font:500 .7rem/1.4 var(--utility); }
+@media (max-width:700px) { .case-hero,.case-section { grid-template-columns:1fr; } .case-nav { padding-bottom:2.5rem; } .case-ledger,.case-grid { grid-template-columns:1fr; } .case-title { font-size:clamp(4.4rem,23vw,7rem); } }
+@media (prefers-reduced-motion:reduce) { .case-image,.case-grid figure { transform:none; transition:none; } }
