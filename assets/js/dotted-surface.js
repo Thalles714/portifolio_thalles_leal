@@ -2,10 +2,6 @@
       const container = document.querySelector("#dotted-surface");
       if (!container) return;
 
-      const scriptUrl = document.currentScript && document.currentScript.src
-        ? document.currentScript.src
-        : document.baseURI;
-
       const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       const SEPARATION = 150;
       const AMOUNT_X = 40;
@@ -128,10 +124,7 @@
       }
 
       try {
-        const threeUrl = window.location.protocol === "file:"
-          ? "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.min.js"
-          : new URL("./lib/three.module.js", scriptUrl).href;
-        THREE = await import(threeUrl);
+        THREE = await import("./lib/three.module.js");
 
         scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0x050506, 1500, 8500);
@@ -218,4 +211,6 @@
         container.classList.add("is-fallback");
         dispose();
       }
-    })();
+})();
+
+export {};

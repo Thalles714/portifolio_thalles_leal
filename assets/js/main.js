@@ -1,4 +1,8 @@
 ﻿(function () {
+import("../../src/modules/signal-motion").then(function (signalMotionModule) {
+      var createSignalMotion = signalMotionModule.createSignalMotion;
+      import("../../src/modules/reveals").then(function (revealModule) {
+      var createReveals = revealModule.createReveals;
       "use strict";
 
       var root = document.documentElement;
@@ -139,9 +143,9 @@
           signalTitle2: "you can inspect.",
           signalIntro: "Five projects showing my progression from responsive interfaces to tested, production-ready web products.",
           signalCta: "View the 5 projects",
-          signalMapLabel: "Interactive map centered on Brazil, indicating availability for remote work",
+          signalMapLabel: "Static signal map centered on Brazil, indicating availability for remote work",
           signalMapEyebrow: "Range / Remote",
-          signalMapLoading: "Locating signal",
+          signalMapSignal: "Local signal",
           signalMapLocation: "Brazil / Remote",
           signalMapTitle: "Open to junior front-end or full-stack roles.",
           signalMapNote: "Available remotely and for freelance projects.",
@@ -172,6 +176,13 @@
           projectsTitle1: "Selected",
           projectsTitle2: "projects.",
           projectsIntro: "Five projects tracing my progression from responsive websites to multi-tenant and local-first products with automated testing.",
+          projectNavigatorLabel: "Project navigator",
+          projectNavigatorKicker: "Choose a transmission",
+          projectNavigatorAction: "Open live project ↗",
+          projectNavigatorHint: "Drag, use the arrows or choose a signal to inspect a project.",
+          projectNavigatorPrevious: "Previous project",
+          projectNavigatorNext: "Next project",
+          projectNavigatorPagination: "Choose a project",
           nitidoRole: "Front-end product project / Private local-first financial analysis",
           nitidoDescription: "I built a responsive PWA that imports CSV and OFX statements, processes financial data on-device and turns transactions into explainable dashboards without requiring an account.",
           nitidoResult: "Private offline-capable analysis, 24 automated tests, E2E coverage and CI/CD to Cloudflare Workers",
@@ -187,6 +198,24 @@
           workflowRole: "Full-stack product project / Operations management SaaS",
           workflowDescription: "I built a SaaS for small agencies to organize clients, projects, deliverables and tasks in one consistent operational hierarchy.",
           workflowResult: "Multi-tenant application with server-side authorization, PostgreSQL RLS, automated tests and a safe read-only demo",
+          caseContextLabel: "Context",
+          caseDecisionLabel: "Product decision",
+          caseEvidenceLabel: "Evidence",
+          caseInterfaceLabel: "Interface evidence",
+          workflowContext: "Small agencies can lose deadlines and approvals when client work is scattered across disconnected tools.",
+          workflowDecision: "I connected clients, projects, deliverables and tasks in one hierarchy, then surfaced the next decision instead of another generic dashboard.",
+          workflowEvidence: "The public read-only demo lets anyone follow a critical signal to its blocked task using safe, entirely fictitious data.",
+          workflowCaption: "From the attention center to the blocked task, the operational context remains visible across desktop and mobile.",
+          workflowShotPrimaryAlt: "Workflow operations dashboard highlighting a blocked landing page and the next decision.",
+          workflowShotSecondaryAlt: "Workflow task detail preserving the client, project and next-step context.",
+          workflowShotMobileAlt: "Workflow attention center adapted to a mobile viewport.",
+          nitidoContext: "Bank statements contain useful answers, but they are difficult to read and too sensitive to send to an unknown server.",
+          nitidoDecision: "I designed an account-free flow that processes CSV and OFX files on-device and turns raw transactions into plain-language categories and insights.",
+          nitidoEvidence: "The built-in example converts 148 fictitious transactions into a private, responsive report that remains available offline.",
+          nitidoCaption: "Privacy is part of the interface: the product explains where processing happens while keeping the financial reading direct.",
+          nitidoShotPrimaryAlt: "Nítido home screen explaining local financial processing without connecting a bank account.",
+          nitidoShotSecondaryAlt: "Nítido category analysis showing spending totals and proportional bars.",
+          nitidoShotMobileAlt: "Nítido financial summary adapted to a mobile viewport.",
           metaStack: "Stack",
           metaResult: "Result",
           projectAction: "Visit live project",
@@ -383,9 +412,9 @@
           signalTitle2: "para conferir.",
           signalIntro: "Cinco projetos que mostram minha evolução de interfaces responsivas a produtos web testados e prontos para produção.",
           signalCta: "Ver os 5 projetos",
-          signalMapLabel: "Mapa interativo centralizado no Brasil, indicando disponibilidade para trabalho remoto",
+          signalMapLabel: "Mapa estático de sinal centralizado no Brasil, indicando disponibilidade para trabalho remoto",
           signalMapEyebrow: "Alcance / Remoto",
-          signalMapLoading: "Localizando sinal",
+          signalMapSignal: "Sinal local",
           signalMapLocation: "Brasil / Remoto",
           signalMapTitle: "Aberto a vagas front-end ou full-stack júnior.",
           signalMapNote: "Disponível para trabalho remoto e projetos freelance.",
@@ -416,6 +445,13 @@
           projectsTitle1: "Projetos",
           projectsTitle2: "selecionados.",
           projectsIntro: "Cinco projetos que registram minha evolução de sites responsivos a produtos multi-tenant e local-first com testes automatizados.",
+          projectNavigatorLabel: "Navegador de projetos",
+          projectNavigatorKicker: "Escolha uma transmissão",
+          projectNavigatorAction: "Abrir projeto publicado ↗",
+          projectNavigatorHint: "Arraste, use as setas ou escolha um sinal para conhecer um projeto.",
+          projectNavigatorPrevious: "Projeto anterior",
+          projectNavigatorNext: "Próximo projeto",
+          projectNavigatorPagination: "Escolher um projeto",
           nitidoRole: "Projeto autoral front-end / Análise financeira privada e local-first",
           nitidoDescription: "Construí uma PWA responsiva que importa extratos CSV e OFX, processa os dados financeiros no dispositivo e transforma transações em dashboards explicáveis sem exigir cadastro.",
           nitidoResult: "Análise privada com modo offline, 24 testes automatizados, cobertura E2E e CI/CD no Cloudflare Workers",
@@ -431,6 +467,24 @@
           workflowRole: "Projeto autoral full-stack / SaaS de gestão operacional",
           workflowDescription: "Construí um SaaS para pequenas agências organizarem clientes, projetos, entregas e tarefas em uma hierarquia operacional consistente.",
           workflowResult: "Aplicação multi-tenant com autorização no servidor, RLS no PostgreSQL, testes automatizados e demo segura somente leitura",
+          caseContextLabel: "Contexto",
+          caseDecisionLabel: "Decisão de produto",
+          caseEvidenceLabel: "Evidência",
+          caseInterfaceLabel: "Evidência de interface",
+          workflowContext: "Pequenas agências podem perder prazos e aprovações quando o trabalho dos clientes fica espalhado entre ferramentas desconectadas.",
+          workflowDecision: "Conectei clientes, projetos, entregas e tarefas em uma única hierarquia e destaquei a próxima decisão, em vez de criar outro dashboard genérico.",
+          workflowEvidence: "A demo pública somente leitura permite seguir um sinal crítico até a tarefa bloqueada usando dados seguros e inteiramente fictícios.",
+          workflowCaption: "Da central de atenção à tarefa bloqueada, o contexto operacional permanece visível no desktop e no mobile.",
+          workflowShotPrimaryAlt: "Painel operacional do Workflow destacando uma landing page bloqueada e a próxima decisão.",
+          workflowShotSecondaryAlt: "Detalhe de tarefa do Workflow preservando o contexto de cliente, projeto e próximo passo.",
+          workflowShotMobileAlt: "Central de atenção do Workflow adaptada a uma tela mobile.",
+          nitidoContext: "Extratos bancários contêm respostas úteis, mas são difíceis de ler e sensíveis demais para enviar a um servidor desconhecido.",
+          nitidoDecision: "Criei um fluxo sem cadastro que processa arquivos CSV e OFX no dispositivo e transforma transações brutas em categorias e insights em linguagem direta.",
+          nitidoEvidence: "O exemplo integrado transforma 148 transações fictícias em um relatório privado, responsivo e disponível offline.",
+          nitidoCaption: "Privacidade faz parte da interface: o produto explica onde o processamento acontece sem complicar a leitura financeira.",
+          nitidoShotPrimaryAlt: "Tela inicial do Nítido explicando o processamento financeiro local sem conectar uma conta bancária.",
+          nitidoShotSecondaryAlt: "Análise de categorias do Nítido mostrando totais de gastos e barras proporcionais.",
+          nitidoShotMobileAlt: "Resumo financeiro do Nítido adaptado a uma tela mobile.",
           metaStack: "Stack",
           metaResult: "Resultado",
           projectAction: "Visitar projeto publicado",
@@ -650,92 +704,13 @@
         });
       });
 
-      var menuToggle = document.querySelector("#menu-toggle");
-      var menuPanel = document.querySelector("#menu-panel");
-      var menuOpen = false;
-      var lastFocused = null;
+      var navigationController = null;
 
       function updateMenuLabel() {
-        var values = translations[currentLanguage];
-        menuToggle.setAttribute("aria-label", menuOpen ? values.closeMenu : values.openMenu);
+        if (navigationController) navigationController.refresh();
       }
 
-      function getMenuFocusable() {
-        return Array.from(menuPanel.querySelectorAll('a[href], button:not([disabled])'));
-      }
-
-      function setMenu(open, restoreFocus) {
-        if (open === menuOpen) return;
-        menuOpen = open;
-        menuToggle.setAttribute("aria-expanded", String(open));
-        menuPanel.classList.toggle("is-open", open);
-        menuPanel.setAttribute("aria-hidden", String(!open));
-        body.classList.toggle("menu-open", open);
-        updateMenuLabel();
-
-        if (open) {
-          lastFocused = document.activeElement;
-          menuPanel.removeAttribute("inert");
-          window.setTimeout(function () {
-            var focusable = getMenuFocusable();
-            if (focusable[0]) focusable[0].focus();
-          }, motionQuery.matches ? 0 : 170);
-        } else {
-          menuPanel.setAttribute("inert", "");
-          if (restoreFocus !== false && lastFocused && typeof lastFocused.focus === "function") {
-            lastFocused.focus();
-          }
-        }
-      }
-
-      menuToggle.addEventListener("click", function () {
-        setMenu(!menuOpen, true);
-      });
-
-      menuToggle.addEventListener("keydown", function (event) {
-        if (event.key !== "Enter" && event.key !== " ") return;
-        event.preventDefault();
-        setMenu(!menuOpen, true);
-      });
-
-      menuPanel.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function () {
-          var target = document.querySelector(link.getAttribute("href"));
-          setMenu(false, false);
-          if (target) {
-            window.setTimeout(function () {
-              target.focus({ preventScroll: true });
-            }, motionQuery.matches ? 0 : 620);
-          }
-        });
-      });
-
-      document.addEventListener("pointerdown", function (event) {
-        if (!menuOpen) return;
-        if (menuPanel.contains(event.target) || menuToggle.contains(event.target)) return;
-        setMenu(false, true);
-      });
-
-      document.addEventListener("keydown", function (event) {
-        if (!menuOpen) return;
-        if (event.key === "Escape") {
-          event.preventDefault();
-          setMenu(false, true);
-          return;
-        }
-        if (event.key !== "Tab") return;
-        var focusable = getMenuFocusable();
-        if (!focusable.length) return;
-        var first = focusable[0];
-        var last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      });
+      var reducedMotion = motionQuery.matches;
 
       var rig = document.querySelector("#orbital-rig");
       var planetCore = document.querySelector("#planet-core");
@@ -756,7 +731,6 @@
       var sceneState = { x: 0, y: 0, scale: 1, opacity: 1, rotation: 0, rings: 0.8 };
       var frameId = 0;
       var lastFrame = 0;
-      var reducedMotion = motionQuery.matches;
       var profilePrologue = document.querySelector(".profile-prologue");
       var profileWave = document.querySelector("#profile-wave");
       var profileWaveSvg = document.querySelector("#profile-wave-svg");
@@ -783,12 +757,11 @@
       var profileNavigationLockUntil = 0;
       var profileDesktopMode = false;
       var signalSection = document.querySelector("#signal");
-      var signalMapCard = document.querySelector("#signal-map-card");
-      var signalMapContainer = document.querySelector("#signal-map");
-      var signalMapObserver = null;
-      var signalMapInstance = null;
-      var signalMapStarted = false;
-      var signalMotionTimeline = null;
+      var signalMotionController = signalSection
+        ? createSignalMotion(signalSection, window.gsap, window.ScrollTrigger)
+        : null;
+      var projectCoverflowController = null;
+      var orbitalSceneController = null;
 
       function clamp(value, min, max) {
         return Math.min(max, Math.max(min, value));
@@ -1675,227 +1648,53 @@
         pointer.tx = 0;
         pointer.ty = 0;
       }
-
       function onResize() {
         if (profileWaveController) profileWaveController.resize();
         configureProfilePrologueMotion();
         configureProfileMotion(true);
-        if (signalMapInstance) signalMapInstance.resize();
-        measureScene();
-        scrollY = window.scrollY;
-      }
-
-      function onVisibilityChange() {
-        if (document.hidden) stopScene();
-        else startScene();
       }
 
       function onMotionChange(event) {
         reducedMotion = event.matches;
-        sceneMotionReady = false;
-        lastFrame = 0;
         root.classList.toggle("motion-ready", !reducedMotion);
         configureProfilePrologueMotion();
         configureProfileMotion(true);
         if (profileWaveController) profileWaveController.refresh();
         if (spaceFieldController) spaceFieldController.refresh();
-        setupSignalMotion();
-        renderScene(0);
+        if (signalMotionController) signalMotionController.refresh(reducedMotion);
+        if (projectCoverflowController) projectCoverflowController.refresh(reducedMotion);
+        if (orbitalSceneController) orbitalSceneController.refresh();
       }
 
-      function setSignalMapFallback() {
-        if (!signalMapCard) return;
-        signalMapCard.classList.remove("is-map-ready");
-        signalMapCard.classList.add("is-map-fallback");
-      }
-
-      function loadSignalMapLibrary() {
-        if (window.maplibregl) return Promise.resolve(window.maplibregl);
-
-        return new Promise(function (resolve, reject) {
-          var existingScript = document.querySelector('script[data-signal-maplibre]');
-          if (existingScript) {
-            existingScript.addEventListener("load", function () { resolve(window.maplibregl); }, { once: true });
-            existingScript.addEventListener("error", reject, { once: true });
-            return;
-          }
-
-          if (!document.querySelector('link[data-signal-maplibre]')) {
-            var stylesheet = document.createElement("link");
-            stylesheet.rel = "stylesheet";
-            stylesheet.href = "https://unpkg.com/maplibre-gl@5.12.0/dist/maplibre-gl.css";
-            stylesheet.dataset.signalMaplibre = "";
-            document.head.appendChild(stylesheet);
-          }
-
-          var script = document.createElement("script");
-          script.src = "https://unpkg.com/maplibre-gl@5.12.0/dist/maplibre-gl.js";
-          script.async = true;
-          script.dataset.signalMaplibre = "";
-          script.addEventListener("load", function () {
-            if (window.maplibregl) resolve(window.maplibregl);
-            else reject(new Error("MapLibre did not initialize"));
-          }, { once: true });
-          script.addEventListener("error", reject, { once: true });
-          document.head.appendChild(script);
-        });
-      }
-
-      function initializeSignalMap() {
-        if (signalMapStarted || !signalMapContainer || !signalMapCard) return;
-        signalMapStarted = true;
-
-        var loadTimeout = window.setTimeout(setSignalMapFallback, 12000);
-
-        loadSignalMapLibrary().then(function (maplibregl) {
-          if (!maplibregl || !signalMapContainer || signalMapInstance) return;
-
-          signalMapInstance = new maplibregl.Map({
-            container: signalMapContainer,
-            style: "https://demotiles.maplibre.org/style.json",
-            center: [-51.9253, -14.235],
-            zoom: window.innerWidth <= 800 ? 2.25 : 2.75,
-            minZoom: 1.8,
-            maxZoom: 5.5,
-            pitch: 0,
-            bearing: 0,
-            attributionControl: true,
-            dragPan: window.innerWidth > 800,
-            scrollZoom: false,
-            dragRotate: false,
-            keyboard: false,
-            touchPitch: false,
-            touchZoomRotate: window.innerWidth > 800
-          });
-
-          signalMapInstance.addControl(new maplibregl.NavigationControl({
-            showCompass: false,
-            showZoom: true
-          }), "top-right");
-
-          signalMapInstance.on("load", function () {
-            window.clearTimeout(loadTimeout);
-
-            var markerElement = document.createElement("span");
-            markerElement.className = "signal-pulse";
-            markerElement.setAttribute("aria-hidden", "true");
-            new maplibregl.Marker({ element: markerElement, anchor: "center" })
-              .setLngLat([-51.9253, -14.235])
-              .addTo(signalMapInstance);
-
-            var canvas = signalMapInstance.getCanvas();
-            canvas.setAttribute("tabindex", "-1");
-            canvas.setAttribute("aria-hidden", "true");
-            signalMapCard.classList.remove("is-map-fallback");
-            signalMapCard.classList.add("is-map-ready");
-          });
-        }).catch(function () {
-          window.clearTimeout(loadTimeout);
-          setSignalMapFallback();
-        });
-      }
-
-      function setupSignalMap() {
-        if (!signalSection || !signalMapContainer) return;
-
-        if (!("IntersectionObserver" in window)) {
-          initializeSignalMap();
-          return;
-        }
-
-        signalMapObserver = new IntersectionObserver(function (entries) {
-          if (!entries[0] || !entries[0].isIntersecting) return;
-          initializeSignalMap();
-          signalMapObserver.disconnect();
-          signalMapObserver = null;
-        }, { rootMargin: "70% 0px", threshold: 0.01 });
-        signalMapObserver.observe(signalSection);
-      }
-
-      function setupSignalMotion() {
-        if (!signalSection) return;
-
-        if (signalMotionTimeline) {
-          if (signalMotionTimeline.scrollTrigger) signalMotionTimeline.scrollTrigger.kill();
-          signalMotionTimeline.kill();
-          signalMotionTimeline = null;
-        }
-
-        if (reducedMotion || !window.gsap || !window.ScrollTrigger) {
-          signalSection.classList.add("is-signal-active");
-          document.querySelectorAll(".signal-chart__bar span, .signal-number, .signal-year, .signal-stack li")
-            .forEach(function (element) {
-              element.style.removeProperty("transform");
-              element.style.removeProperty("opacity");
-            });
-          return;
-        }
-
-        window.gsap.registerPlugin(window.ScrollTrigger);
-        signalSection.classList.remove("is-signal-active");
-        signalMotionTimeline = window.gsap.timeline({
-          defaults: { ease: "power3.out" },
-          scrollTrigger: {
-            trigger: signalSection,
-            start: "top 68%",
-            once: true,
-            onEnter: function () { signalSection.classList.add("is-signal-active"); }
-          }
-        });
-
-        signalMotionTimeline
-          .fromTo(".signal-chart__bar span", { scaleX: 0 }, { scaleX: 1, duration: 0.75, stagger: 0.07 }, 0.08)
-          .fromTo(".signal-number, .signal-year", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, stagger: 0.08 }, 0.14)
-          .fromTo(".signal-stack li", { y: 7, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.035 }, 0.2);
-      }
-
-      var revealObserver = null;
-
-      function setupReveals() {
-        if (reducedMotion || !("IntersectionObserver" in window)) {
-          document.querySelectorAll(".reveal").forEach(function (element) {
-            element.classList.add("is-visible");
-          });
-          return;
-        }
-
-        root.classList.add("motion-ready");
-        revealObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.12,
-          rootMargin: "0px 0px -8% 0px"
-        });
-
-        document.querySelectorAll(".reveal").forEach(function (element) {
-          revealObserver.observe(element);
-        });
-      }
+      var revealController = createReveals(root);
 
       setLanguage(currentLanguage);
-      setupReveals();
+      revealController.refresh(reducedMotion);
+      import("../../src/modules/navigation").then(function (navigationModule) {
+        navigationController = navigationModule.createNavigation(function () {
+          return translations[currentLanguage];
+        }, motionQuery);
+        updateMenuLabel();
+        root.dataset.navigationReady = "true";
+      });
+      import("../../src/modules/project-coverflow").then(function (projectModule) {
+        var coverflowRoot = document.querySelector("#project-navigator");
+        projectCoverflowController = coverflowRoot
+          ? projectModule.createProjectCoverflow(coverflowRoot)
+          : null;
+        if (projectCoverflowController) projectCoverflowController.refresh(reducedMotion);
+      });
+      import("../../src/modules/orbital-scene").then(function (orbitalModule) {
+        orbitalSceneController = orbitalModule.createOrbitalScene();
+        if (orbitalSceneController) orbitalSceneController.start();
+      });
       setupProfile();
-      setupSignalMap();
-      setupSignalMotion();
+      if (signalMotionController) signalMotionController.refresh(reducedMotion);
       profileWaveController = setupProfileWave();
       spaceFieldController = setupSpaceFields();
       configureProfilePrologueMotion();
       configureProfileMotion(false);
-      measureScene();
-      scrollY = window.scrollY;
-      renderScene(0);
-      startScene();
-
-      window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", onResize, { passive: true });
-      window.addEventListener("pointermove", onPointerMove, { passive: true });
-      document.documentElement.addEventListener("pointerleave", onPointerLeave, { passive: true });
-      document.addEventListener("visibilitychange", onVisibilityChange);
 
       if (typeof motionQuery.addEventListener === "function") {
         motionQuery.addEventListener("change", onMotionChange);
@@ -1909,28 +1708,26 @@
       }
 
       window.addEventListener("beforeunload", function () {
-        stopScene();
+        if (orbitalSceneController) orbitalSceneController.destroy();
+        if (navigationController) navigationController.destroy();
         destroyProfilePrologueMotion();
         destroyProfileDesktop();
         if (profileWaveController) profileWaveController.destroy();
         if (spaceFieldController) spaceFieldController.destroy();
         if (profileResizeObserver) profileResizeObserver.disconnect();
-        if (signalMapObserver) signalMapObserver.disconnect();
-        if (signalMotionTimeline) {
-          if (signalMotionTimeline.scrollTrigger) signalMotionTimeline.scrollTrigger.kill();
-          signalMotionTimeline.kill();
-        }
-        if (signalMapInstance) signalMapInstance.remove();
+        if (signalMotionController) signalMotionController.destroy();
+        if (projectCoverflowController) projectCoverflowController.destroy();
         if (profileScrollFrame) window.cancelAnimationFrame(profileScrollFrame);
         if (profileRefreshFrame) window.cancelAnimationFrame(profileRefreshFrame);
-        if (revealObserver) revealObserver.disconnect();
-        window.removeEventListener("scroll", onScroll);
+        revealController.destroy();
         window.removeEventListener("resize", onResize);
-        window.removeEventListener("pointermove", onPointerMove);
-        document.removeEventListener("visibilitychange", onVisibilityChange);
         if (profileViewport) {
           profileViewport.removeEventListener("scroll", onProfileNativeScroll);
           profileViewport.removeEventListener("keydown", onProfileKeydown);
         }
       }, { once: true });
-    })();
+    });
+    });
+})();
+
+export {};

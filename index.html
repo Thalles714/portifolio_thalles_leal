@@ -9,16 +9,42 @@
   <meta name="description" content="Thalles Leal is a junior front-end and full-stack developer who builds responsive web interfaces and applications with React, Next.js and Node.js.">
   <meta name="author" content="Thalles Leal">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://portifoliothallesleal.vercel.app/">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portifoliothallesleal.vercel.app/">
+  <meta property="og:site_name" content="Thalles Leal">
+  <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Thalles Leal — Junior Front-end & Full-stack Developer">
   <meta property="og:description" content="Responsive web interfaces and applications built with React, Next.js and Node.js.">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://portifoliothallesleal.vercel.app/assets/images/social/portfolio-og.png">
+  <meta property="og:image:width" content="1728">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="Thalles Leal — Front-end & Full-stack developer, Brazil / Remote.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thalles Leal — Junior Front-end & Full-stack Developer">
+  <meta name="twitter:description" content="Responsive web interfaces and applications built with React, Next.js and Node.js.">
+  <meta name="twitter:image" content="https://portifoliothallesleal.vercel.app/assets/images/social/portfolio-og.png">
+  <meta name="twitter:image:alt" content="Thalles Leal — Front-end & Full-stack developer, Brazil / Remote.">
   <title>Thalles Leal — Junior Front-end & Full-stack Developer</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/images/hero/orbital-planet.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Thalles Leal",
+      "url": "https://portifoliothallesleal.vercel.app/",
+      "jobTitle": "Junior Front-end & Full-stack Developer",
+      "knowsAbout": ["React", "Next.js", "TypeScript", "Node.js", "Web development"],
+      "sameAs": [
+        "https://br.linkedin.com/in/thalles-leal-tavares-9b0404294",
+        "https://github.com/Thalles714"
+      ]
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" id="skip-link" href="#main-content">Skip to portfolio</a>
@@ -657,12 +683,12 @@
       id="signal"
       tabindex="-1"
       data-scene
-      data-scene-x="-12"
-      data-scene-y="4"
-      data-scene-scale="1.22"
-      data-scene-opacity="0.38"
-      data-scene-rotation="-5"
-      data-scene-rings="0.42"
+      data-scene-x="-8"
+      data-scene-y="3"
+      data-scene-scale="0.94"
+      data-scene-opacity="0.1"
+      data-scene-rotation="-3"
+      data-scene-rings="0.12"
       aria-labelledby="signal-title"
     >
       <div class="profile-handoff" aria-hidden="true">
@@ -690,21 +716,23 @@
 
         <div class="signal-grid" id="signal-grid">
           <article class="signal-card signal-card--map reveal" id="signal-map-card" style="--reveal-delay: 70ms">
-            <div
-              class="signal-map"
-              id="signal-map"
-              role="region"
-              data-i18n-aria-label="signalMapLabel"
-              aria-label="Interactive map centered on Brazil, indicating availability for remote work"
-            >
-              <div class="signal-map__fallback" aria-hidden="true">
-                <span class="signal-pulse"></span>
-              </div>
+            <div class="signal-map" role="img" data-i18n-aria-label="signalMapLabel" aria-label="Map centered on Brazil, indicating availability for remote work">
+              <svg class="signal-map__territory" viewBox="0 0 520 440" aria-hidden="true" focusable="false">
+                <path class="signal-map__rings" d="M27 106C152 0 366 1 493 105M3 215C132 110 385 108 517 216M31 330C158 433 362 433 490 330" />
+                <path class="signal-map__longitude" d="M78 221H440M260 40V401" />
+                <path class="signal-map__brazil" d="M207 48 272 54 304 79 336 98 381 112 401 151 386 185 400 220 378 255 384 291 351 341 307 381 267 363 239 331 199 315 170 281 151 244 164 207 143 167 166 124Z" />
+                <path class="signal-map__trace" d="M183 138 228 117 283 120 339 148 364 192M194 271 251 292 313 279 356 244" />
+                <circle class="signal-map__node signal-map__node--north" cx="228" cy="117" r="2.5" />
+                <circle class="signal-map__node signal-map__node--south" cx="313" cy="279" r="2.5" />
+              </svg>
+              <span class="signal-pulse signal-map__pulse" aria-hidden="true"></span>
+              <span class="signal-map__coordinate signal-map__coordinate--top" aria-hidden="true">07° 12′ S</span>
+              <span class="signal-map__coordinate signal-map__coordinate--bottom" aria-hidden="true">34° 53′ W</span>
             </div>
             <div class="signal-map__content">
               <div class="signal-card__topline">
                 <span data-i18n="signalMapEyebrow">Range / Remote</span>
-                <span class="signal-status signal-map__loading" data-i18n="signalMapLoading">Locating signal</span>
+                <span class="signal-status" data-i18n="signalMapSignal">Local signal</span>
               </div>
               <div class="signal-map__copy">
                 <span class="signal-map__location" data-i18n="signalMapLocation">Brazil / Remote</span>
@@ -719,7 +747,18 @@
               <span data-i18n="signalProjectsLabel">Featured projects</span>
               <span data-i18n="signalEvidence">Verified work</span>
             </div>
-            <p class="signal-number" aria-label="5">05</p>
+            <p class="signal-number" role="status" aria-label="5">
+              <span class="signal-number__window" aria-hidden="true">
+                <span class="signal-number__track">
+                  <span>00</span>
+                  <span>01</span>
+                  <span>02</span>
+                  <span>03</span>
+                  <span>04</span>
+                  <span>05</span>
+                </span>
+              </span>
+            </p>
             <div class="signal-projects__bottom">
               <p data-i18n="signalProjectsNote">Operations, private financial analysis, healthcare, solar energy and an agricultural catalog.</p>
               <a class="signal-projects__link" href="#projects" data-i18n-aria-label="signalProjectsAction" aria-label="Go to selected projects">&searr;</a>
@@ -807,7 +846,16 @@
     </section>
 
     <section class="section projects" id="projects" tabindex="-1" aria-labelledby="projects-title">
-      <div class="projects-intro">
+      <div
+        class="projects-intro"
+        data-scene
+        data-scene-x="-16"
+        data-scene-y="-6"
+        data-scene-scale="0.78"
+        data-scene-opacity="0.2"
+        data-scene-rotation="-9"
+        data-scene-rings="0.16"
+      >
         <div class="section-shell">
           <p class="section-kicker reveal" data-i18n="projectsKicker">Selected work / 05 builds</p>
           <h2 class="section-title reveal" id="projects-title">
@@ -819,20 +867,67 @@
               Five projects tracing my progression from responsive websites to multi-tenant and local-first products with automated testing.
             </p>
           </div>
+          <section class="project-coverflow reveal" id="project-navigator" aria-roledescription="carousel" aria-label="Project navigator" data-i18n-aria-label="projectNavigatorLabel">
+            <div class="project-coverflow__heading">
+              <span data-i18n="projectNavigatorKicker">Choose a transmission</span>
+              <span class="project-coverflow__count" aria-live="polite">01 / 05</span>
+            </div>
+            <div class="project-coverflow__viewport" tabindex="0" aria-describedby="project-navigator-hint">
+              <div class="project-coverflow__stage">
+                <a class="project-coverflow__card project-coverflow__card--workflow" href="https://workflow-app-lac.vercel.app" target="_blank" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/workflow/central-desktop.png" alt="Workflow operations dashboard" data-i18n-alt="workflowShotPrimaryAlt" width="1440" height="1000" loading="lazy" decoding="async"></div>
+                  <span class="project-coverflow__index">01</span><span class="project-coverflow__type">SaaS / Operations</span><strong>Workflow</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
+                </a>
+                <a class="project-coverflow__card project-coverflow__card--nitido" href="https://nitido.thallestleal.workers.dev" target="_blank" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual"><img src="assets/images/projects/nitido/home-desktop.png" alt="Nítido financial privacy interface" data-i18n-alt="nitidoShotPrimaryAlt" width="1440" height="1000" loading="lazy" decoding="async"></div>
+                  <span class="project-coverflow__index">02</span><span class="project-coverflow__type">PWA / Local-first</span><strong>Nítido</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
+                </a>
+                <a class="project-coverflow__card project-coverflow__card--voe" href="http://clinicavoealto.com.br/" target="_blank" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual" aria-hidden="true"><span>V</span></div>
+                  <span class="project-coverflow__index">03</span><span class="project-coverflow__type">Web / Healthcare</span><strong>Clínica Voe Alto</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
+                </a>
+                <a class="project-coverflow__card project-coverflow__card--solar" href="https://www.goodsollar.com.br/" target="_blank" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual" aria-hidden="true"><span>GS</span></div>
+                  <span class="project-coverflow__index">04</span><span class="project-coverflow__type">Web / Solar energy</span><strong>Good Sollar</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
+                </a>
+                <a class="project-coverflow__card project-coverflow__card--catalog" href="https://piaui-catalogo.vercel.app/" target="_blank" rel="noopener noreferrer" data-project-cover>
+                  <div class="project-coverflow__visual" aria-hidden="true"><span>CP</span></div>
+                  <span class="project-coverflow__index">05</span><span class="project-coverflow__type">Platform / Commerce</span><strong>Catálogo para Corretores</strong><span class="project-coverflow__action" data-i18n="projectNavigatorAction">Open live project ↗</span>
+                </a>
+              </div>
+            </div>
+            <p class="project-coverflow__hint" id="project-navigator-hint" data-i18n="projectNavigatorHint">Drag, use the arrows or choose a signal to inspect a project.</p>
+            <div class="project-coverflow__controls">
+              <button type="button" class="project-coverflow__control" data-project-previous data-i18n-aria-label="projectNavigatorPrevious" aria-label="Previous project">←</button>
+              <div class="project-coverflow__pagination" aria-label="Choose a project" data-i18n-aria-label="projectNavigatorPagination"></div>
+              <button type="button" class="project-coverflow__control" data-project-next data-i18n-aria-label="projectNavigatorNext" aria-label="Next project">→</button>
+            </div>
+          </section>
         </div>
       </div>
 
       <article
-        class="project"
+        class="project project--featured project--workflow"
         data-scene
         data-scene-x="-18"
         data-scene-y="-4"
         data-scene-scale="0.76"
-        data-scene-opacity="0.26"
+        data-scene-opacity="0"
         data-scene-rotation="-12"
         data-scene-rings="0.2"
         aria-labelledby="project-workflow"
       >
+        <span
+          class="scene-stop scene-stop--top"
+          data-scene
+          data-scene-x="-18"
+          data-scene-y="-4"
+          data-scene-scale="0.76"
+          data-scene-opacity="0"
+          data-scene-rotation="-12"
+          data-scene-rings="0"
+          aria-hidden="true"
+        ></span>
         <div class="project-shell">
           <span class="project-index reveal">01 / 05</span>
           <div class="project-main reveal">
@@ -858,16 +953,71 @@
               <span class="button-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
+          <div class="project-story reveal" style="--reveal-delay: 140ms">
+            <article class="project-story__card" data-module="INPUT">
+              <span class="project-story__index">01</span>
+              <h4 data-i18n="caseContextLabel">Context</h4>
+              <p data-i18n="workflowContext">Small agencies can lose deadlines and approvals when client work is scattered across disconnected tools.</p>
+            </article>
+            <article class="project-story__card" data-module="LOGIC">
+              <span class="project-story__index">02</span>
+              <h4 data-i18n="caseDecisionLabel">Product decision</h4>
+              <p data-i18n="workflowDecision">I connected clients, projects, deliverables and tasks in one hierarchy, then surfaced the next decision instead of another generic dashboard.</p>
+            </article>
+            <article class="project-story__card" data-module="PROOF">
+              <span class="project-story__index">03</span>
+              <h4 data-i18n="caseEvidenceLabel">Evidence</h4>
+              <p data-i18n="workflowEvidence">The public read-only demo lets anyone follow a critical signal to its blocked task using safe, entirely fictitious data.</p>
+            </article>
+          </div>
+          <figure class="project-evidence project-evidence--workflow reveal" style="--reveal-delay: 180ms">
+            <div class="project-evidence__stage">
+              <img
+                class="project-shot project-shot--primary"
+                src="assets/images/projects/workflow/central-desktop.png"
+                alt="Workflow operations dashboard highlighting a blocked landing page and the next decision."
+                data-i18n-alt="workflowShotPrimaryAlt"
+                width="1440"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              >
+              <img
+                class="project-shot project-shot--secondary"
+                src="assets/images/projects/workflow/task-desktop.png"
+                alt="Workflow task detail preserving the client, project and next-step context."
+                data-i18n-alt="workflowShotSecondaryAlt"
+                width="1440"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              >
+              <img
+                class="project-shot project-shot--mobile"
+                src="assets/images/projects/workflow/central-mobile.png"
+                alt="Workflow attention center adapted to a mobile viewport."
+                data-i18n-alt="workflowShotMobileAlt"
+                width="390"
+                height="844"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+            <figcaption>
+              <span data-i18n="caseInterfaceLabel">Interface evidence</span>
+              <p data-i18n="workflowCaption">From the attention center to the blocked task, the operational context remains visible across desktop and mobile.</p>
+            </figcaption>
+          </figure>
         </div>
       </article>
 
       <article
-        class="project"
+        class="project project--featured project--nitido"
         data-scene
         data-scene-x="-21"
         data-scene-y="2"
         data-scene-scale="0.84"
-        data-scene-opacity="0.3"
+        data-scene-opacity="0"
         data-scene-rotation="-9"
         data-scene-rings="0.24"
         aria-labelledby="project-nitido"
@@ -897,6 +1047,61 @@
               <span class="button-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
+          <div class="project-story reveal" style="--reveal-delay: 140ms">
+            <article class="project-story__card" data-module="INPUT">
+              <span class="project-story__index">01</span>
+              <h4 data-i18n="caseContextLabel">Context</h4>
+              <p data-i18n="nitidoContext">Bank statements contain useful answers, but they are difficult to read and too sensitive to send to an unknown server.</p>
+            </article>
+            <article class="project-story__card" data-module="LOGIC">
+              <span class="project-story__index">02</span>
+              <h4 data-i18n="caseDecisionLabel">Product decision</h4>
+              <p data-i18n="nitidoDecision">I designed an account-free flow that processes CSV and OFX files on-device and turns raw transactions into plain-language categories and insights.</p>
+            </article>
+            <article class="project-story__card" data-module="PROOF">
+              <span class="project-story__index">03</span>
+              <h4 data-i18n="caseEvidenceLabel">Evidence</h4>
+              <p data-i18n="nitidoEvidence">The built-in example converts 148 fictitious transactions into a private, responsive report that remains available offline.</p>
+            </article>
+          </div>
+          <figure class="project-evidence project-evidence--nitido reveal" style="--reveal-delay: 180ms">
+            <div class="project-evidence__stage">
+              <img
+                class="project-shot project-shot--primary"
+                src="assets/images/projects/nitido/home-desktop.png"
+                alt="Nítido home screen explaining local financial processing without connecting a bank account."
+                data-i18n-alt="nitidoShotPrimaryAlt"
+                width="1440"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              >
+              <img
+                class="project-shot project-shot--secondary"
+                src="assets/images/projects/nitido/categories-desktop.png"
+                alt="Nítido category analysis showing spending totals and proportional bars."
+                data-i18n-alt="nitidoShotSecondaryAlt"
+                width="1440"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              >
+              <img
+                class="project-shot project-shot--mobile"
+                src="assets/images/projects/nitido/report-mobile.png"
+                alt="Nítido financial summary adapted to a mobile viewport."
+                data-i18n-alt="nitidoShotMobileAlt"
+                width="390"
+                height="844"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+            <figcaption>
+              <span data-i18n="caseInterfaceLabel">Interface evidence</span>
+              <p data-i18n="nitidoCaption">Privacy is part of the interface: the product explains where processing happens while keeping the financial reading direct.</p>
+            </figcaption>
+          </figure>
         </div>
       </article>
 
@@ -906,7 +1111,7 @@
         data-scene-x="-23"
         data-scene-y="3"
         data-scene-scale="0.88"
-        data-scene-opacity="0.28"
+        data-scene-opacity="0"
         data-scene-rotation="-8"
         data-scene-rings="0.2"
         aria-labelledby="project-voe-alto"
@@ -945,7 +1150,7 @@
         data-scene-x="-16"
         data-scene-y="-7"
         data-scene-scale="0.72"
-        data-scene-opacity="0.24"
+        data-scene-opacity="0"
         data-scene-rotation="-14"
         data-scene-rings="0.18"
         aria-labelledby="project-good-sollar"
@@ -984,11 +1189,22 @@
         data-scene-x="-25"
         data-scene-y="5"
         data-scene-scale="0.82"
-        data-scene-opacity="0.3"
+        data-scene-opacity="0"
         data-scene-rotation="-19"
         data-scene-rings="0.22"
         aria-labelledby="project-catalog"
       >
+        <span
+          class="scene-stop scene-stop--bottom"
+          data-scene
+          data-scene-x="-25"
+          data-scene-y="5"
+          data-scene-scale="0.82"
+          data-scene-opacity="0"
+          data-scene-rotation="-19"
+          data-scene-rings="0"
+          aria-hidden="true"
+        ></span>
         <div class="project-shell">
           <span class="project-index reveal">05 / 05</span>
           <div class="project-main reveal">
@@ -1076,9 +1292,9 @@
       data-scene-x="27"
       data-scene-y="-6"
       data-scene-scale="0.9"
-      data-scene-opacity="0.34"
+      data-scene-opacity="0.38"
       data-scene-rotation="12"
-      data-scene-rings="0.45"
+      data-scene-rings="0.42"
       aria-labelledby="experience-title"
     >
       <div class="section-shell">
@@ -1126,10 +1342,10 @@
       data-scene
       data-scene-x="-5"
       data-scene-y="8"
-      data-scene-scale="1.15"
-      data-scene-opacity="0.55"
-      data-scene-rotation="-7"
-      data-scene-rings="0.78"
+      data-scene-scale="1.08"
+      data-scene-opacity="0.46"
+      data-scene-rotation="-6"
+      data-scene-rings="0.56"
       aria-labelledby="availability-title"
     >
       <div class="section-shell">
@@ -1170,10 +1386,10 @@
       data-scene
       data-scene-x="34"
       data-scene-y="12"
-      data-scene-scale="2.05"
-      data-scene-opacity="0.62"
-      data-scene-rotation="17"
-      data-scene-rings="0.55"
+      data-scene-scale="1.35"
+      data-scene-opacity="0.34"
+      data-scene-rotation="8"
+      data-scene-rings="0.32"
       aria-labelledby="contact-title"
     >
       <div class="section-shell contact-shell">
@@ -1303,9 +1519,6 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/dotted-surface.js?v=20260807.3" defer></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

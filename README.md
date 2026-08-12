@@ -1,12 +1,16 @@
 # Portfólio — Thalles Leal
 
-Portfólio - bilíngue e responsivo.
+Portfólio bilíngue e responsivo, desenvolvido como site estático com Vite e TypeScript.
 
 ## Estrutura
 
 ```text
 .
 ├── index.html
+├── package.json
+├── tsconfig.json
+├── src/
+│   └── main.ts          # ponto único de inicialização
 ├── assets/
 │   ├── css/styles.css
 │   ├── fonts/
@@ -27,18 +31,35 @@ Portfólio - bilíngue e responsivo.
 
 ## Executar localmente
 
-Na raiz do projeto:
+Instale as dependências uma vez:
 
 ```powershell
-python -m http.server 4173
+npm install
 ```
 
-Abra `http://localhost:4173`.
+Inicie o ambiente local:
 
-Também é possível abrir `index.html` diretamente pelo protocolo `file://`. Nesse modo de prévia, somente a superfície do rodapé usa o mesmo módulo Three.js hospedado no CDN do arquivo de referência, pois navegadores bloqueiam módulos JavaScript locais sob `file://`.
+```powershell
+npm run dev
+```
+
+O endereço exibido no terminal normalmente será `http://localhost:5173`.
+
+## Verificar e gerar
+
+```powershell
+npm run typecheck
+npm run build
+npm run preview
+```
+
+O build otimizado é gerado em `dist/`. Abrir o HTML diretamente por `file://` não é mais o fluxo suportado, pois os módulos são processados pelo Vite.
 
 ## Publicar
 
-O diretório raiz é a pasta de publicação. O projeto pode ser enviado diretamente para Vercel, Netlify, Cloudflare Pages ou GitHub Pages, sem comando de build.
+Configure a hospedagem com:
 
-As animações auxiliares usam GSAP e MapLibre GL via CDN, com efeitos alternativos quando essas bibliotecas não estão disponíveis. Em servidor ou deploy, o Three.js da superfície pontilhada está versionado localmente em `assets/js/lib`. A importação remota equivalente ao molde é usada apenas na prévia direta por `file://`.
+- Comando de build: `npm run build`
+- Diretório de saída: `dist`
+
+GSAP é uma dependência versionada do projeto. O Three.js da superfície pontilhada permanece versionado localmente em `assets/js/lib` e é carregado sob demanda. A localização profissional na seção Sinal é uma composição SVG/CSS local: não há mapa remoto, tiles ou chamadas externas.
