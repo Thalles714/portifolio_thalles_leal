@@ -1,12 +1,15 @@
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const builtIndexPath = path.join(projectRoot, "dist", "index.html");
-const builtIndex = await readFile(builtIndexPath, "utf8");
+const pages = [
+  { name: "home", path: path.join(projectRoot, "dist", "index.html") },
+  { name: "Workflow", path: path.join(projectRoot, "dist", "projects", "workflow", "index.html") },
+];
 
-function getMetaContent(attribute, value) {
+function getMetaContent(html, attribute, value) {
   const escapedValue = value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const pattern = new RegExp(
     `<meta\\s+[^>]*${attribute}=["']${escapedValue}["'][^>]*content=["']([^"']+)["'][^>]*>`,
@@ -17,21 +20,45 @@ function getMetaContent(attribute, value) {
     "i",
   );
 
-  return builtIndex.match(pattern)?.[1] ?? builtIndex.match(reversePattern)?.[1];
+  return html.match(pattern)?.[1] ?? html.match(reversePattern)?.[1];
 }
 
-const ogImageUrl = getMetaContent("property", "og:image");
-const twitterImageUrl = getMetaContent("name", "twitter:image");
-const declaredWidth = Number(getMetaContent("property", "og:image:width"));
-const declaredHeight = Number(getMetaContent("property", "og:image:height"));
+const declarations = await Promise.all(pages.map(async (page) => {
+  const html = await readFile(page.path, "utf8");
+  return {
+    name: page.name,
+    ogImageUrl: getMetaContent(html, "property", "og:image"),
+    twitterImageUrl: getMetaContent(html, "name", "twitter:image"),
+    declaredWidth: Number(getMetaContent(html, "property", "og:image:width")),
+    declaredHeight: Number(getMetaContent(html, "property", "og:image:height")),
+    imageAlt: getMetaContent(html, "property", "og:image:alt"),
+  };
+}));
 
-if (!ogImageUrl) throw new Error("The production HTML does not declare og:image.");
-if (twitterImageUrl !== ogImageUrl) {
-  throw new Error("twitter:image must use the same verified asset as og:image.");
+for (const declaration of declarations) {
+  if (!declaration.ogImageUrl) throw new Error(`${declaration.name} does not declare og:image.`);
+  if (declaration.twitterImageUrl !== declaration.ogImageUrl) {
+    throw new Error(`${declaration.name}: twitter:image must match og:image.`);
+  }
+  if (!declaration.imageAlt) throw new Error(`${declaration.name} does not declare og:image:alt.`);
+  if (!declaration.declaredWidth || !declaration.declaredHeight) {
+    throw new Error(`${declaration.name} does not declare valid social image dimensions.`);
+  }
+}
+
+const [primaryDeclaration] = declarations;
+const ogImageUrl = primaryDeclaration.ogImageUrl;
+if (declarations.some((declaration) => declaration.ogImageUrl !== ogImageUrl)) {
+  throw new Error("Every page must use the same verified social preview asset.");
 }
 
 const imageUrl = new URL(ogImageUrl);
-const imagePath = path.join(projectRoot, "dist", decodeURIComponent(imageUrl.pathname));
+const fingerprintMatch = imageUrl.pathname.match(/portfolio-og-([a-f0-9]{8})\.png$/i);
+if (!fingerprintMatch) {
+  throw new Error("Social preview filename must contain its content fingerprint to prevent stale unfurl caches.");
+}
+
+const imagePath = path.join(projectRoot, "dist", decodeURIComponent(imageUrl.pathname).replace(/^\/+/, ""));
 const image = await readFile(imagePath);
 const pngSignature = "89504e470d0a1a0a";
 
@@ -41,11 +68,16 @@ if (image.subarray(0, 8).toString("hex") !== pngSignature) {
 
 const actualWidth = image.readUInt32BE(16);
 const actualHeight = image.readUInt32BE(20);
+const actualFingerprint = createHash("sha256").update(image).digest("hex").slice(0, 8);
 
-if (actualWidth !== declaredWidth || actualHeight !== declaredHeight) {
-  throw new Error(
-    `Declared social image dimensions ${declaredWidth}x${declaredHeight} do not match ${actualWidth}x${actualHeight}.`,
-  );
+if (actualFingerprint !== fingerprintMatch[1].toLowerCase()) {
+  throw new Error(`Social preview filename fingerprint ${fingerprintMatch[1]} does not match ${actualFingerprint}.`);
+}
+
+for (const declaration of declarations) {
+  if (actualWidth !== declaration.declaredWidth || actualHeight !== declaration.declaredHeight) {
+    throw new Error(`${declaration.name}: declared dimensions do not match ${actualWidth}x${actualHeight}.`);
+  }
 }
 
 if (image.length < 10_000) {
