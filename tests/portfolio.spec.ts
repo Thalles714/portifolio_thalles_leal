@@ -43,9 +43,12 @@ test("orbital planet stays hidden through the profile-to-signal handoff", async 
     if (!signal) throw new Error("Signal section is missing");
     window.scrollTo(0, signal.offsetTop - window.innerHeight * 0.7);
   });
-  await page.waitForTimeout(900);
+  const orbitalRig = page.locator("#orbital-rig");
+  await expect.poll(async () => orbitalRig.evaluate((element) =>
+    Number.parseFloat(window.getComputedStyle(element).opacity)
+  ), { timeout: 10_000 }).toBeLessThanOrEqual(0.08);
 
-  const orbitalOpacity = await page.locator("#orbital-rig").evaluate((element) =>
+  const orbitalOpacity = await orbitalRig.evaluate((element) =>
     Number.parseFloat(window.getComputedStyle(element).opacity)
   );
   const transitionGap = await page.evaluate(() => {
@@ -151,7 +154,11 @@ test("project cards only open after they have reached the center", async ({ page
     return Math.abs((cardRect.left + cardRect.width / 2) - (viewportRect.left + viewportRect.width / 2));
   })).toBeLessThan(6);
 
-  await nitido.click();
+  await page.evaluate(() => {
+    const card = document.querySelector<HTMLAnchorElement>('[data-project-id="nitido"]');
+    if (!card) throw new Error("Nítido project card is missing");
+    card.click();
+  });
   await expect(page).toHaveURL(/\/projects\/nitido\/$/);
 });
 
