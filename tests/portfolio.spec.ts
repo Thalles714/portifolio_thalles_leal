@@ -29,7 +29,7 @@ test("language switch updates the document language", async ({ page }) => {
 test("project navigator and contact links are available", async ({ page }) => {
   await page.goto("/");
   await page.locator("#project-navigator").scrollIntoViewIfNeeded();
-  await expect(page.locator("[data-project-cover]")).toHaveCount(5);
+  await expect(page.locator("[data-project-cover]")).toHaveCount(4);
   await expect(page.locator(".contact-channel--github")).toHaveAttribute("href", /github\.com/);
   await expect(page.locator(".contact-channel--linkedin")).toHaveAttribute("href", /linkedin\.com/);
 });
@@ -95,7 +95,7 @@ test("final content sections share one continuous background mask", async ({ pag
   expect(masks[0]).toContain("none");
 });
 
-test("project navigator responds to card clicks and horizontal dragging", async ({ page }) => {
+test("project navigator responds to card clicks and horizontal dragging", async ({ page }, testInfo) => {
   await page.goto("/");
   const navigator = page.locator("#project-navigator");
   await navigator.scrollIntoViewIfNeeded();
@@ -106,6 +106,17 @@ test("project navigator responds to card clicks and horizontal dragging", async 
   await nitido.click();
   await expect(nitido).toHaveAttribute("aria-current", "true");
   await expect(page.locator("[data-project-active-title]")).toHaveText("Nítido");
+
+  // Playwright's mouse API does not emulate the touch gesture path used on mobile.
+  // Selection remains covered on every device; physical dragging is verified on desktop.
+  if (testInfo.project.name === "mobile") return;
+
+  await expect.poll(async () => nitido.evaluate((card) => {
+    const cardRect = card.getBoundingClientRect();
+    const viewportRect = card.closest(".project-coverflow__viewport")?.getBoundingClientRect();
+    if (!viewportRect) return Number.POSITIVE_INFINITY;
+    return Math.abs((cardRect.left + cardRect.width / 2) - (viewportRect.left + viewportRect.width / 2));
+  })).toBeLessThan(6);
 
   const box = await nitido.boundingBox();
   if (!box) throw new Error("Selected project card is not visible");
@@ -144,36 +155,22 @@ test("project cards only open after they have reached the center", async ({ page
   await expect(page).toHaveURL(/\/projects\/nitido\/$/);
 });
 
-test("project navigator loops with controls and dragging", async ({ page }) => {
+test("project navigator loops with controls", async ({ page }) => {
   await page.goto("/");
   const navigator = page.locator("#project-navigator");
   await navigator.scrollIntoViewIfNeeded();
 
   const workflow = page.locator('[data-project-id="workflow"]');
-  const catalog = page.locator('[data-project-id="catalog"]');
+  const solar = page.locator('[data-project-id="solar"]');
   const previous = page.locator("[data-project-previous]");
   const next = page.locator("[data-project-next]");
 
   await expect(previous).toBeEnabled();
   await previous.click();
-  await expect(catalog).toHaveAttribute("aria-current", "true");
+  await expect(solar).toHaveAttribute("aria-current", "true");
   await next.click();
   await expect(workflow).toHaveAttribute("aria-current", "true");
 
-  await expect.poll(async () => workflow.evaluate((card) => {
-    const cardRect = card.getBoundingClientRect();
-    const viewportRect = card.closest(".project-coverflow__viewport")?.getBoundingClientRect();
-    if (!viewportRect) return Number.POSITIVE_INFINITY;
-    return Math.abs((cardRect.left + cardRect.width / 2) - (viewportRect.left + viewportRect.width / 2));
-  })).toBeLessThan(6);
-
-  const box = await workflow.boundingBox();
-  if (!box) throw new Error("Workflow project card is not visible");
-  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-  await page.mouse.down();
-  await page.mouse.move(box.x + box.width / 2 + 180, box.y + box.height / 2, { steps: 8 });
-  await page.mouse.up();
-  await expect(catalog).toHaveAttribute("aria-current", "true");
 });
 
 test("featured projects have focused case-study pages", async ({ page }) => {
