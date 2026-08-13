@@ -1,3 +1,253 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workflow — Case study | Thalles Leal</title><meta name="description" content="Workflow case study: an operations SaaS for small agencies."><link rel="canonical" href="https://portifoliothallesleal.vercel.app/projects/workflow/"><link rel="stylesheet" href="/assets/css/case-study.css"></head>
-<body class="case-page"><main class="case-shell"><nav class="case-nav"><a href="/">← Portfolio</a><span>Case study / 01</span></nav><header class="case-hero"><div><p class="case-kicker">SaaS / Operations management</p><h1 class="case-title"><span>Work</span>flow</h1></div><div><p class="case-summary">A SaaS for small agencies to keep clients, projects, deliverables and tasks inside one operational hierarchy.</p><div class="case-actions"><a class="case-action case-action--primary" href="https://workflow-app-lac.vercel.app" target="_blank" rel="noopener noreferrer">Open live project ↗</a><a class="case-action" href="/projects/nitido/">Next case →</a></div></div></header><section class="case-ledger"><div><dt>Role</dt><dd>Full-stack product project</dd></div><div><dt>Stack</dt><dd>Next.js, React, TypeScript, Supabase, PostgreSQL, Vitest, Playwright</dd></div><div><dt>Outcome</dt><dd>Read-only demo with server-side authorization and automated tests</dd></div></section><figure class="case-image"><img src="/assets/images/projects/workflow/central-desktop.png" width="1440" height="1000" alt="Workflow operations dashboard highlighting the next decision."></figure><section class="case-section"><h2>Context</h2><p>Small agencies can lose deadlines and approvals when client work is scattered across disconnected tools. The product brings the operational chain into one place, so the next decision is visible instead of buried in a generic dashboard.</p></section><section class="case-section"><h2>Product decision</h2><p>I connected clients, projects, deliverables and tasks in one hierarchy, then designed the attention center around signals that need action. The demo uses fictitious data and remains safe to inspect publicly.</p></section><section class="case-section"><h2>Interface evidence</h2><div class="case-grid"><figure><img src="/assets/images/projects/workflow/task-desktop.png" width="1440" height="1000" alt="Workflow task detail preserving project context."><figcaption>From a signal to the blocked task.</figcaption></figure><figure><img src="/assets/images/projects/workflow/central-mobile.png" width="390" height="844" alt="Workflow attention center on mobile."><figcaption>The operational view adapts to mobile.</figcaption></figure></div></section></main></body></html>
+<html lang="pt-BR" data-lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>Workflow — a história de um SaaS para pequenas agências | Thalles Leal</title>
+    <meta name="description" content="Como eu transformei o ruído operacional de pequenas agências em um SaaS de decisões explicáveis, seguro e multi-tenant.">
+    <link rel="canonical" href="https://portifoliothallesleal.vercel.app/projects/workflow/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Workflow — uma decisão por vez">
+    <meta property="og:description" content="A história de como eu projetei e desenvolvi um SaaS de operações para pequenas agências.">
+    <meta property="og:url" content="https://portifoliothallesleal.vercel.app/projects/workflow/">
+    <meta property="og:image" content="https://portifoliothallesleal.vercel.app/assets/images/social/portfolio-og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://portifoliothallesleal.vercel.app/assets/images/social/portfolio-og.png">
+    <link rel="stylesheet" href="/assets/css/case-study.css">
+    <link rel="stylesheet" href="/assets/css/workflow-case.css">
+    <script>document.documentElement.classList.add("js");</script>
+    <script type="module" src="/assets/js/workflow-case.js"></script>
+  </head>
+  <body class="case-page workflow-story-page">
+    <a class="skip-link" href="#abertura" data-copy data-pt="Ir para a história" data-en="Skip to the story">Ir para a história</a>
+
+    <header class="story-topbar">
+      <a class="story-back" href="/" data-aria-pt="Voltar ao portfólio" data-aria-en="Back to portfolio" aria-label="Voltar ao portfólio">
+        <span aria-hidden="true">←</span><span data-copy data-pt="Portfólio" data-en="Portfolio">Portfólio</span>
+      </a>
+      <p class="story-identity"><span>Case 01</span><i aria-hidden="true"></i><strong>Workflow</strong></p>
+      <p class="story-active-title" aria-hidden="true" data-active-title>O que eu criei</p>
+    </header>
+
+    <button class="menu-toggle" id="menu-toggle" data-menu-toggle type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menu de navegação">
+      <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+
+    <aside class="menu-panel" id="menu-panel" aria-hidden="true" aria-label="Menu do site" inert>
+      <p class="menu-heading" data-copy data-pt="Navegar / Portfólio" data-en="Navigate / Portfolio">Navegar / Portfólio</p>
+      <nav aria-label="Navegação do menu" data-aria-pt="Navegação do menu" data-aria-en="Menu navigation">
+        <ul class="menu-list">
+          <li class="menu-item" style="--menu-order:0"><div class="menu-item-inner"><a class="menu-link" href="/"><span class="label-window"><span class="kinetic-label" data-copy data-pt="Início" data-en="Home">Início</span></span><span>01 ↗</span></a></div></li>
+          <li class="menu-item" style="--menu-order:1"><div class="menu-item-inner"><a class="menu-link" href="/#projects"><span class="label-window"><span class="kinetic-label" data-copy data-pt="Projetos" data-en="Work">Projetos</span></span><span>02 ↗</span></a></div></li>
+          <li class="menu-item" style="--menu-order:2"><div class="menu-item-inner"><a class="menu-link" href="/#about"><span class="label-window"><span class="kinetic-label" data-copy data-pt="Sobre" data-en="About">Sobre</span></span><span>03 ↗</span></a></div></li>
+          <li class="menu-item" style="--menu-order:3"><div class="menu-item-inner"><a class="menu-link" href="/#skills"><span class="label-window"><span class="kinetic-label" data-copy data-pt="Habilidades" data-en="Skills">Habilidades</span></span><span>04 ↗</span></a></div></li>
+          <li class="menu-item" style="--menu-order:4"><div class="menu-item-inner"><a class="menu-link" href="/#experience"><span class="label-window"><span class="kinetic-label" data-copy data-pt="Experiência" data-en="Experience">Experiência</span></span><span>05 ↗</span></a></div></li>
+          <li class="menu-item" style="--menu-order:5"><div class="menu-item-inner"><a class="menu-link" href="/#contact"><span class="label-window"><span class="kinetic-label" data-copy data-pt="Contato" data-en="Contact">Contato</span></span><span>06 ↗</span></a></div></li>
+        </ul>
+      </nav>
+      <div class="menu-footer">
+        <ul class="menu-socials" aria-label="Links sociais">
+          <li><a href="https://github.com/Thalles714" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+          <li><a href="https://br.linkedin.com/in/thalles-leal-tavares-9b0404294" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+          <li><a href="mailto:thallestleal@gmail.com">Email ↗</a></li>
+        </ul>
+        <button class="menu-language" type="button" data-language-toggle data-aria-pt="Mudar idioma para inglês" data-aria-en="Switch language to Portuguese" aria-label="Mudar idioma para inglês">
+          <span class="label-window"><span class="kinetic-label" data-copy data-pt="English / EN" data-en="Português / BR">English / EN</span></span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="story-deck" id="case-content" data-story-deck tabindex="0" aria-label="História do projeto Workflow" data-aria-pt="História do projeto Workflow" data-aria-en="Workflow project story">
+      <section class="story-chapter chapter-opening theme-obsidian" id="abertura" data-chapter data-nav-pt="Criei" data-nav-en="Built" aria-labelledby="opening-title">
+        <div class="chapter-shell chapter-shell--split">
+          <div class="chapter-copy">
+            <p class="chapter-index"><span>01</span><span data-copy data-pt="O que eu criei" data-en="What I built">O que eu criei</span></p>
+            <h1 id="opening-title" class="chapter-title"><span>Workflow.</span><span data-copy data-pt="Uma decisão" data-en="One decision">Uma decisão</span><em data-copy data-pt="por vez." data-en="at a time.">por vez.</em></h1>
+            <p class="chapter-lead" data-copy data-pt="Eu criei um SaaS de operações para pequenas agências encontrarem o que exige atenção, entenderem o contexto e decidirem o próximo passo." data-en="I created an operations SaaS that helps small agencies find what needs attention, understand the context and decide the next move.">Eu criei um SaaS de operações para pequenas agências encontrarem o que exige atenção, entenderem o contexto e decidirem o próximo passo.</p>
+            <p class="demo-disclosure"><span data-copy data-pt="Demo pública" data-en="Public demo">Demo pública</span><span data-copy data-pt="Dados fictícios" data-en="Fictitious data">Dados fictícios</span><span data-copy data-pt="Somente leitura" data-en="Read-only">Somente leitura</span></p>
+            <div class="chapter-actions">
+              <a class="story-button story-button--primary" href="https://workflow-app-lac.vercel.app" target="_blank" rel="noopener noreferrer" data-aria-pt="Abrir projeto ao vivo — explorar a demo do Workflow" data-aria-en="Open live project — explore the Workflow demo" aria-label="Abrir projeto ao vivo — explorar a demo do Workflow"><span data-copy data-pt="Explorar demo" data-en="Explore demo">Explorar demo</span><b aria-hidden="true">↗</b></a>
+              <a class="story-button" href="https://github.com/Thalles714/workflow-app" target="_blank" rel="noopener noreferrer"><span data-copy data-pt="Ver código" data-en="View source">Ver código</span><b aria-hidden="true">↗</b></a>
+            </div>
+          </div>
+          <div class="decision-thread decision-thread--hero" aria-label="Ruído, pergunta, ideia, modelo, decisão, sistema, aprendizado e futuro">
+            <p data-copy data-pt="Minha linha de raciocínio" data-en="My line of reasoning">Minha linha de raciocínio</p>
+            <ol>
+              <li class="is-past"><button type="button" data-thread-target="origem"><span data-copy data-pt="Ruído" data-en="Noise">Ruído</span></button></li>
+              <li class="is-current"><button type="button" data-thread-target="origem"><span data-copy data-pt="Pergunta" data-en="Question">Pergunta</span></button></li>
+              <li><button type="button" data-thread-target="ideia"><span data-copy data-pt="Ideia" data-en="Idea">Ideia</span></button></li>
+              <li><button type="button" data-thread-target="modelo"><span data-copy data-pt="Modelo" data-en="Model">Modelo</span></button></li>
+              <li><button type="button" data-thread-target="decisoes"><span data-copy data-pt="Decisão" data-en="Decision">Decisão</span></button></li>
+              <li><button type="button" data-thread-target="protecao"><span data-copy data-pt="Sistema" data-en="System">Sistema</span></button></li>
+              <li><button type="button" data-thread-target="aprendizados"><span data-copy data-pt="Aprendizado" data-en="Learning">Aprendizado</span></button></li>
+              <li><button type="button" data-thread-target="futuro"><span data-copy data-pt="Futuro" data-en="Future">Futuro</span></button></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-paper" id="origem" data-chapter data-nav-pt="Origem" data-nav-en="Origin" aria-labelledby="origin-title">
+        <div class="chapter-shell chapter-shell--editorial">
+          <div class="chapter-copy">
+            <p class="chapter-index"><span>02</span><span data-copy data-pt="De onde veio" data-en="Where it began">De onde veio</span></p>
+            <h2 id="origin-title" class="chapter-title"><span data-copy data-pt="O trabalho aparecia." data-en="The work was visible.">O trabalho aparecia.</span><em data-copy data-pt="A decisão, não." data-en="The decision was not.">A decisão, não.</em></h2>
+            <p class="chapter-lead" data-copy data-pt="Eu parti de um cenário recorrente em pequenas agências: contexto dividido entre mensagens, planilhas, arquivos e gerenciadores de tarefas. Tudo mostrava atividade; quase nada revelava o que precisava ser decidido agora." data-en="I started from a recurring pattern in small agencies: context split across messages, spreadsheets, files and task managers. Everything showed activity; almost nothing revealed what needed a decision now.">Eu parti de um cenário recorrente em pequenas agências: contexto dividido entre mensagens, planilhas, arquivos e gerenciadores de tarefas. Tudo mostrava atividade; quase nada revelava o que precisava ser decidido agora.</p>
+          </div>
+          <div class="noise-map" data-noise-lab aria-label="Fontes de ruído operacional">
+            <button type="button" data-noise-source aria-pressed="false"><span>WhatsApp</span><small data-copy data-pt="contexto" data-en="context">contexto</small><i aria-hidden="true">×</i></button>
+            <button type="button" data-noise-source aria-pressed="false"><span data-copy data-pt="Planilhas" data-en="Spreadsheets">Planilhas</span><small>status</small><i aria-hidden="true">×</i></button>
+            <button type="button" data-noise-source aria-pressed="false"><span>Drive</span><small data-copy data-pt="arquivos" data-en="files">arquivos</small><i aria-hidden="true">×</i></button>
+            <button type="button" data-noise-source aria-pressed="false"><span data-copy data-pt="Tarefas" data-en="Tasks">Tarefas</span><small data-copy data-pt="atividade" data-en="activity">atividade</small><i aria-hidden="true">×</i></button>
+            <div class="noise-question"><blockquote data-copy data-pt="Como eu posso mostrar o que exige atenção antes que vire um problema?" data-en="How can I show what needs attention before it becomes a problem?">Como eu posso mostrar o que exige atenção antes que vire um problema?</blockquote><div class="noise-meter"><span data-copy data-pt="Clique para silenciar o ruído" data-en="Click to quiet the noise">Clique para silenciar o ruído</span><i aria-hidden="true"><b data-noise-progress></b></i><output data-noise-count>0 / 4</output></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-graphite" id="ideia" data-chapter data-nav-pt="Ideia" data-nav-en="Idea" aria-labelledby="idea-title">
+        <div class="chapter-shell chapter-shell--split">
+          <div class="chapter-copy">
+            <p class="chapter-index"><span>03</span><span data-copy data-pt="A ideia" data-en="The idea">A ideia</span></p>
+            <h2 id="idea-title" class="chapter-title"><span data-copy data-pt="Eu parei de contar" data-en="I stopped counting">Eu parei de contar</span><em data-copy data-pt="tarefas." data-en="tasks.">tarefas.</em></h2>
+            <p class="chapter-lead" data-copy data-pt="Em vez de construir outro painel de produtividade, eu desenhei o Workflow para gerenciar por exceção: o trabalho saudável fica silencioso e os riscos explicam por que subiram." data-en="Instead of building another productivity dashboard, I designed Workflow to manage by exception: healthy work stays quiet and risks explain why they surfaced.">Em vez de construir outro painel de produtividade, eu desenhei o Workflow para gerenciar por exceção: o trabalho saudável fica silencioso e os riscos explicam por que subiram.</p>
+          </div>
+          <div class="idea-contrast" data-idea-focus>
+            <div class="idea-before"><span data-copy data-pt="Antes" data-en="Before">Antes</span><strong>47</strong><p data-copy data-pt="itens disputando atenção" data-en="items competing for attention">itens disputando atenção</p></div>
+            <button class="idea-arrow" type="button" data-idea-toggle aria-pressed="false" data-aria-pt="Concentrar a atenção em uma decisão" data-aria-en="Focus attention on one decision" aria-label="Concentrar a atenção em uma decisão"><i aria-hidden="true"></i><b aria-hidden="true">→</b></button>
+            <div class="idea-after"><span data-copy data-pt="Minha direção" data-en="My direction">Minha direção</span><strong>01</strong><p data-copy data-pt="decisão explicável agora" data-en="explainable decision now">decisão explicável agora</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-paper" id="modelo" data-chapter data-nav-pt="Modelo" data-nav-en="Model" aria-labelledby="model-title">
+        <div class="chapter-shell chapter-shell--wide">
+          <div class="chapter-copy chapter-copy--row">
+            <div><p class="chapter-index"><span>04</span><span data-copy data-pt="O modelo" data-en="The model">O modelo</span></p><h2 id="model-title" class="chapter-title"><span data-copy data-pt="Eu preservei" data-en="I preserved">Eu preservei</span><em data-copy data-pt="a cadeia de sentido." data-en="the chain of meaning.">a cadeia de sentido.</em></h2></div>
+            <p class="chapter-lead" data-copy data-pt="Modelei cada alerta para voltar do limite da agência até a ação exata. A decisão central foi tratar Entrega como entidade própria — o elo entre execução e o resultado que o cliente espera." data-en="I modeled every alert to trace from the agency boundary to the exact action. The central decision was making Deliverable its own entity — the link between execution and the outcome the client expects.">Modelei cada alerta para voltar do limite da agência até a ação exata. A decisão central foi tratar Entrega como entidade própria — o elo entre execução e o resultado que o cliente espera.</p>
+          </div>
+          <div class="domain-explorer" data-domain-explorer>
+            <svg class="domain-path" viewBox="0 0 720 230" preserveAspectRatio="none" aria-hidden="true"><path d="M70 55 C150 55 150 175 235 175 S325 55 405 55 S500 175 565 175 S620 55 680 55" pathLength="1"></path></svg>
+            <ol class="domain-map" data-aria-pt="Hierarquia do domínio Workflow" data-aria-en="Workflow domain hierarchy" aria-label="Hierarquia do domínio Workflow">
+              <li><button type="button" data-domain-node data-domain-kind="workspace" data-title-pt="Workspace" data-title-en="Workspace" data-body-pt="Eu começo pelo limite do tenant: toda leitura e escrita nasce dentro de um espaço de trabalho resolvido no servidor." data-body-en="I start at the tenant boundary: every read and write begins inside a workspace resolved on the server." aria-pressed="false"><svg class="domain-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="11" height="11" rx="1"></rect><path d="M8 8h12v12H8z"></path><path d="M15 8h5v5"></path></svg><span><strong>Workspace</strong><small data-copy data-pt="limite do tenant" data-en="tenant boundary">limite do tenant</small></span><b aria-hidden="true">↗</b></button></li>
+              <li><button type="button" data-domain-node data-domain-kind="client" data-title-pt="Cliente" data-title-en="Client" data-body-pt="O cliente preserva para quem o trabalho existe e mantém cada alerta ligado à relação comercial." data-body-en="The client preserves who the work exists for and keeps every alert tied to the commercial relationship." aria-pressed="false"><svg class="domain-symbol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="2.5"></circle><path d="M3.75 18c.45-3.15 1.9-4.75 4.25-4.75S11.8 14.85 12.25 18"></path><path d="M14 6.5h6v5h-2.4L15 13.5v-2h-1z"></path></svg><span><strong data-copy data-pt="Cliente" data-en="Client">Cliente</strong><small data-copy data-pt="relação comercial" data-en="relationship">relação comercial</small></span><b aria-hidden="true">↗</b></button></li>
+              <li><button type="button" data-domain-node data-domain-kind="project" data-title-pt="Projeto" data-title-en="Project" data-body-pt="O projeto organiza o trabalho contratado sem perder prazo, responsáveis ou contexto." data-body-en="The project organizes contracted work without losing deadline, ownership or context." aria-pressed="false"><svg class="domain-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5h6l2 2H20.5v9H3.5z"></path><path d="M3.5 7.5V5h6l2 2.5"></path><path d="M7 14h10"></path></svg><span><strong data-copy data-pt="Projeto" data-en="Project">Projeto</strong><small data-copy data-pt="trabalho contratado" data-en="contracted work">trabalho contratado</small></span><b aria-hidden="true">↗</b></button></li>
+              <li><button type="button" data-domain-node data-domain-kind="deliverable" data-title-pt="Entrega" data-title-en="Deliverable" data-body-pt="Esta foi minha decisão central: Entrega é uma entidade própria, o elo entre execução e o resultado que o cliente espera." data-body-en="This was my central decision: Deliverable is its own entity, linking execution to the outcome the client expects." aria-pressed="true"><svg class="domain-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 8 4.25v8.5l-8 4.25-8-4.25v-8.5z"></path><path d="m4 7.75 8 4.5 8-4.5M12 12.25v8.25"></path><path d="m8 5.65 8 4.4"></path></svg><span><strong data-copy data-pt="Entrega" data-en="Deliverable">Entrega</strong><small data-copy data-pt="resultado esperado" data-en="expected outcome">resultado esperado</small></span><b aria-hidden="true">↗</b></button></li>
+              <li><button type="button" data-domain-node data-domain-kind="task" data-title-pt="Tarefa" data-title-en="Task" data-body-pt="A tarefa termina a cadeia com uma ação executável, responsável e específica." data-body-en="The task completes the chain with a specific, accountable, executable action." aria-pressed="false"><svg class="domain-symbol" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1.5"></rect><path d="m7.5 12 3 3 6-7"></path></svg><span><strong data-copy data-pt="Tarefa" data-en="Task">Tarefa</strong><small data-copy data-pt="ação responsável" data-en="accountable action">ação responsável</small></span><b aria-hidden="true">↗</b></button></li>
+            </ol>
+            <aside class="domain-inspector" aria-live="polite"><span data-copy data-pt="Entidade selecionada" data-en="Selected entity">Entidade selecionada</span><strong data-domain-title>Entrega</strong><p data-domain-body>Esta foi minha decisão central: Entrega é uma entidade própria, o elo entre execução e o resultado que o cliente espera.</p></aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-obsidian" id="experiencia" data-chapter data-nav-pt="Experiência" data-nav-en="Experience" aria-labelledby="experience-title">
+        <div class="chapter-shell chapter-shell--product">
+          <div class="chapter-copy">
+            <p class="chapter-index"><span>05</span><span data-copy data-pt="A experiência" data-en="The experience">A experiência</span></p>
+            <h2 id="experience-title" class="chapter-title"><span data-copy data-pt="Eu transformei sinal" data-en="I turned signal">Eu transformei sinal</span><em data-copy data-pt="em próximo passo." data-en="into a next move.">em próximo passo.</em></h2>
+            <p class="chapter-lead" data-copy data-pt="A Central responde “onde agir?”, mantém o contexto visível e termina em uma ação específica. Três momentos; nenhuma rolagem obrigatória dentro do painel." data-en="The Attention Center answers “where should I act?”, keeps context visible and ends with a specific action. Three moments; no forced scrolling inside the panel.">A Central responde “onde agir?”, mantém o contexto visível e termina em uma ação específica. Três momentos; nenhuma rolagem obrigatória dentro do painel.</p>
+          </div>
+          <div class="product-evidence" data-product-demo aria-label="Exemplo da lógica do Workflow">
+            <div class="product-steps" role="tablist"><button type="button" role="tab" aria-selected="true" data-product-step="exception"><b>01</b><small data-copy data-pt="Exceção" data-en="Exception">Exceção</small></button><button type="button" role="tab" aria-selected="false" data-product-step="context"><b>02</b><small data-copy data-pt="Contexto" data-en="Context">Contexto</small></button><button type="button" role="tab" aria-selected="false" data-product-step="action"><b>03</b><small data-copy data-pt="Ação" data-en="Action">Ação</small></button></div>
+            <div class="product-panels">
+              <article class="product-signal is-active" data-product-panel="exception"><div><span data-copy data-pt="CRÍTICO · VENCE HOJE" data-en="CRITICAL · DUE TODAY">CRÍTICO · VENCE HOJE</span><small data-copy data-pt="Landing page bloqueada" data-en="Landing page blocked">Landing page bloqueada</small></div><strong data-copy data-pt="Sua operação pede uma decisão agora." data-en="Your operation asks for one decision now.">Sua operação pede uma decisão agora.</strong><dl><div><dt data-copy data-pt="Sinal" data-en="Signal">Sinal</dt><dd data-copy data-pt="Bloqueio + prazo hoje" data-en="Blocker + deadline today">Bloqueio + prazo hoje</dd></div><div><dt data-copy data-pt="Prioridade" data-en="Priority">Prioridade</dt><dd data-copy data-pt="Acima da atividade ambiente" data-en="Above ambient activity">Acima da atividade ambiente</dd></div></dl></article>
+              <article class="product-signal" data-product-panel="context" hidden><div><span data-copy data-pt="CONTEXTO PRESERVADO" data-en="CONTEXT PRESERVED">CONTEXTO PRESERVADO</span><small>Órbita · Launch Q3</small></div><strong data-copy data-pt="O bloqueio segura um resultado do cliente." data-en="The blocker is holding a client outcome.">O bloqueio segura um resultado do cliente.</strong><dl><div><dt data-copy data-pt="Entrega" data-en="Deliverable">Entrega</dt><dd>Landing page</dd></div><div><dt data-copy data-pt="Aguardando" data-en="Waiting on">Aguardando</dt><dd data-copy data-pt="Aprovação do cliente" data-en="Client approval">Aprovação do cliente</dd></div></dl></article>
+              <article class="product-signal" data-product-panel="action" hidden><div><span data-copy data-pt="PRÓXIMA DECISÃO" data-en="NEXT DECISION">PRÓXIMA DECISÃO</span><small data-copy data-pt="Tarefa responsável" data-en="Accountable task">Tarefa responsável</small></div><strong data-copy data-pt="Validar o texto jurídico com o cliente." data-en="Validate the legal copy with the client.">Validar o texto jurídico com o cliente.</strong><dl><div><dt data-copy data-pt="Responsável" data-en="Owner">Responsável</dt><dd>Marina Costa</dd></div><div><dt data-copy data-pt="Desbloqueia" data-en="Unblocks">Desbloqueia</dt><dd data-copy data-pt="Entrega da landing page" data-en="Landing page delivery">Entrega da landing page</dd></div></dl></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-paper" id="decisoes" data-chapter data-nav-pt="Decisões" data-nav-en="Decisions" aria-labelledby="decisions-title">
+        <div class="chapter-shell chapter-shell--wide">
+          <div class="chapter-copy chapter-copy--row"><div><p class="chapter-index"><span>06</span><span data-copy data-pt="Minhas decisões" data-en="My decisions">Minhas decisões</span></p><h2 id="decisions-title" class="chapter-title"><span data-copy data-pt="Eu escolhi coerência" data-en="I chose coherence">Eu escolhi coerência</span><em data-copy data-pt="antes de volume." data-en="before volume.">antes de volume.</em></h2></div><p class="chapter-lead" data-copy data-pt="As escolhas de produto e engenharia nasceram da mesma pergunta: isso ajuda alguém a decidir com confiança?" data-en="My product and engineering choices came from the same question: does this help someone decide with confidence?">As escolhas de produto e engenharia nasceram da mesma pergunta: isso ajuda alguém a decidir com confiança?</p></div>
+          <div class="decision-desk" data-decision-desk>
+            <div class="decision-core" aria-live="polite"><i aria-hidden="true"></i><span data-copy data-pt="Escolha ativa" data-en="Active choice">Escolha ativa</span><strong data-decision-title>Gerenciar por exceção</strong><p data-decision-body>Eu priorizei poucas situações acionáveis, não gráficos decorativos.</p><small data-decision-proof>sinais ordenados e explicáveis</small></div>
+            <div class="decision-switches" role="tablist" aria-label="Decisões do produto">
+              <button type="button" role="tab" aria-selected="true" data-decision-choice data-title-pt="Gerenciar por exceção" data-title-en="Manage by exception" data-body-pt="Eu priorizei poucas situações acionáveis, não gráficos decorativos." data-body-en="I prioritized a few actionable situations, not decorative charts." data-proof-pt="sinais ordenados e explicáveis" data-proof-en="ranked, explainable signals"><strong data-copy data-pt="Exceção" data-en="Exception">Exceção</strong><small data-copy data-pt="menos ruído" data-en="less noise">menos ruído</small></button>
+              <button type="button" role="tab" aria-selected="false" data-decision-choice data-title-pt="Uma fonte, várias visões" data-title-en="One source, useful views" data-body-pt="Central, Meu Trabalho, Kanban e Lista leem os mesmos registros." data-body-en="Attention, My Work, Kanban and List read the same records." data-proof-pt="sem duplicar a verdade" data-proof-en="no duplicated truth"><strong data-copy data-pt="Coerência" data-en="Coherence">Coerência</strong><small data-copy data-pt="uma verdade" data-en="one truth">uma verdade</small></button>
+              <button type="button" role="tab" aria-selected="false" data-decision-choice data-title-pt="Regras que eu consigo explicar" data-title-en="Rules I can explain" data-body-pt="Crítico, risco e atenção são determinísticos, puros e testáveis." data-body-en="Critical, risk and attention remain deterministic, pure and testable." data-proof-pt="sem pontuação opaca de IA" data-proof-en="no opaque AI score"><strong data-copy data-pt="Confiança" data-en="Trust">Confiança</strong><small data-copy data-pt="regra visível" data-en="visible rule">regra visível</small></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-graphite" id="construcao" data-chapter data-nav-pt="Construção" data-nav-en="Build" aria-labelledby="build-title">
+        <div class="chapter-shell chapter-shell--wide">
+          <div class="chapter-copy chapter-copy--compact"><p class="chapter-index"><span>07</span><span data-copy data-pt="Como eu construí" data-en="How I built it">Como eu construí</span></p><h2 id="build-title" class="chapter-title"><span data-copy data-pt="Ferramentas com" data-en="Tools with">Ferramentas com</span><em data-copy data-pt="função clara." data-en="a clear role.">função clara.</em></h2><p class="chapter-lead" data-copy data-pt="Eu usei uma stack enxuta para manter interface, domínio, dados e entrega verificáveis." data-en="I used a focused stack to keep interface, domain, data and delivery verifiable.">Eu usei uma stack enxuta para manter interface, domínio, dados e entrega verificáveis.</p></div>
+          <ul class="tech-bench" data-aria-pt="Tecnologias usadas no Workflow" data-aria-en="Technologies used in Workflow" aria-label="Tecnologias usadas no Workflow">
+            <li><button type="button" data-tech-choice aria-pressed="true"><span data-tech-icon="nextdotjs"></span><strong>Next.js</strong><small data-copy data-pt="aplicação" data-en="application">aplicação</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="react"></span><strong>React</strong><small data-copy data-pt="interface" data-en="interface">interface</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="typescript"></span><strong>TypeScript</strong><small data-copy data-pt="contratos" data-en="contracts">contratos</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="supabase"></span><strong>Supabase</strong><small>auth + data</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="postgresql"></span><strong>PostgreSQL</strong><small>data + RLS</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="zod"></span><strong>Zod</strong><small data-copy data-pt="validação" data-en="validation">validação</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="vitest"></span><strong>Vitest</strong><small data-copy data-pt="domínio" data-en="domain">domínio</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="githubactions"></span><strong>GitHub Actions</strong><small>quality</small></button></li>
+            <li><button type="button" data-tech-choice aria-pressed="false"><span data-tech-icon="vercel"></span><strong>Vercel</strong><small data-copy data-pt="entrega" data-en="delivery">entrega</small></button></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-obsidian" id="protecao" data-chapter data-nav-pt="Proteção" data-nav-en="Trust" aria-labelledby="trust-title">
+        <div class="chapter-shell chapter-shell--wide">
+          <div class="chapter-copy chapter-copy--row"><div><p class="chapter-index"><span>08</span><span data-copy data-pt="Como eu protegi" data-en="How I protected it">Como eu protegi</span></p><h2 id="trust-title" class="chapter-title"><span data-copy data-pt="Eu mantive o tenant" data-en="I kept the tenant">Eu mantive o tenant</span><em data-copy data-pt="fora do alcance do browser." data-en="out of the browser's control.">fora do alcance do browser.</em></h2></div><p class="chapter-lead" data-copy data-pt="A sessão resolve usuário, membership e papel no servidor; os serviços recebem o escopo derivado e o PostgreSQL RLS funciona como segunda defesa." data-en="The session resolves user, membership and role on the server; services receive the derived scope and PostgreSQL RLS acts as a second defense.">A sessão resolve usuário, membership e papel no servidor; os serviços recebem o escopo derivado e o PostgreSQL RLS funciona como segunda defesa.</p></div>
+          <div class="security-lab" data-security-lab>
+            <ol class="trust-pipeline"><li><strong data-copy data-pt="Sessão" data-en="Session">Sessão</strong></li><li><strong>Membership</strong></li><li><strong data-copy data-pt="Contexto do servidor" data-en="Server context">Contexto do servidor</strong></li><li><strong data-copy data-pt="Serviço de domínio" data-en="Domain service">Serviço de domínio</strong></li><li><strong>PostgreSQL RLS</strong></li></ol>
+            <i class="security-packet" aria-hidden="true"></i>
+            <div class="security-console"><button type="button" data-security-run><span data-copy data-pt="Simular acesso cross-tenant" data-en="Simulate cross-tenant access">Simular acesso cross-tenant</span><b aria-hidden="true">→</b></button><output data-security-output data-copy data-pt="Pronto para testar as fronteiras." data-en="Ready to test the boundaries.">Pronto para testar as fronteiras.</output></div>
+            <div class="quality-proof"><p><span data-copy data-pt="Isolamento" data-en="Isolation">Isolamento</span><b>cross-tenant + IDOR</b></p><p><span data-copy data-pt="Regras" data-en="Rules">Regras</span><b>Vitest + PGlite</b></p><p><span data-copy data-pt="Experiência" data-en="Experience">Experiência</span><b>keyboard + reduced motion</b></p><p><span data-copy data-pt="Entrega" data-en="Delivery">Entrega</span><b>Playwright + CI + build</b></p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-paper" id="aprendizados" data-chapter data-nav-pt="Aprendi" data-nav-en="Learned" aria-labelledby="lessons-title">
+        <div class="chapter-shell chapter-shell--editorial">
+          <div class="chapter-copy"><p class="chapter-index"><span>09</span><span data-copy data-pt="O que eu aprendi" data-en="What I learned">O que eu aprendi</span></p><h2 id="lessons-title" class="chapter-title"><span data-copy data-pt="Clareza também é" data-en="Clarity is also">Clareza também é</span><em data-copy data-pt="arquitetura." data-en="architecture.">arquitetura.</em></h2><p class="chapter-lead" data-copy data-pt="O projeto me mostrou que uma interface direta só funciona quando domínio, autorização e estados compartilham a mesma lógica." data-en="The project showed me that a direct interface only works when domain, authorization and states share the same logic.">O projeto me mostrou que uma interface direta só funciona quando domínio, autorização e estados compartilham a mesma lógica.</p></div>
+          <div class="lesson-blueprint" data-lesson-blueprint data-aria-pt="Quatro aprendizados do projeto" data-aria-en="Four project lessons" aria-label="Quatro aprendizados do projeto">
+            <div class="lesson-principles" role="tablist" data-aria-pt="Escolha um aprendizado" data-aria-en="Choose a lesson" aria-label="Escolha um aprendizado">
+              <button type="button" role="tab" data-lesson-principle="domain" aria-selected="true"><span aria-hidden="true">D</span><i aria-hidden="true">↗</i><strong data-copy data-pt="Domínio" data-en="Domain">Domínio</strong><small data-copy data-pt="a linguagem molda o produto" data-en="language shapes the product">a linguagem molda o produto</small><p data-copy data-pt="Nomear Entrega mudou a conversa de tarefa para resultado." data-en="Naming Deliverable changed the conversation from task to outcome.">Nomear Entrega mudou a conversa de tarefa para resultado.</p></button>
+              <button type="button" role="tab" data-lesson-principle="explanation" aria-selected="false"><span aria-hidden="true">E</span><i aria-hidden="true">↗</i><strong data-copy data-pt="Explicação" data-en="Explanation">Explicação</strong><small data-copy data-pt="confiança nasce da regra visível" data-en="trust comes from visible rules">confiança nasce da regra visível</small><p data-copy data-pt="Uma regra simples e explicável pode ser mais útil que um score sofisticado." data-en="A simple, explainable rule can be more useful than a sophisticated score.">Uma regra simples e explicável pode ser mais útil que um score sofisticado.</p></button>
+              <button type="button" role="tab" data-lesson-principle="security" aria-selected="false"><span aria-hidden="true">S</span><i aria-hidden="true">↗</i><strong data-copy data-pt="Segurança" data-en="Security">Segurança</strong><small data-copy data-pt="o limite vem antes da consulta" data-en="the boundary precedes the query">o limite vem antes da consulta</small><p data-copy data-pt="Segurança multi-tenant começa no modelo mental, não apenas no banco." data-en="Multi-tenant security starts in the mental model, not only in the database.">Segurança multi-tenant começa no modelo mental, não apenas no banco.</p></button>
+              <button type="button" role="tab" data-lesson-principle="proof" aria-selected="false"><span aria-hidden="true">P</span><i aria-hidden="true">↗</i><strong data-copy data-pt="Prova" data-en="Proof">Prova</strong><small data-copy data-pt="mostrar valor sem encenar produção" data-en="show value without staging production">mostrar valor sem encenar produção</small><p data-copy data-pt="Uma demo pública precisa provar valor sem fingir ser produção." data-en="A public demo must prove value without pretending to be production.">Uma demo pública precisa provar valor sem fingir ser produção.</p></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-chapter theme-mist" id="futuro" data-chapter data-nav-pt="Futuro" data-nav-en="Future" aria-labelledby="future-title">
+        <div class="chapter-shell chapter-shell--wide">
+          <div class="chapter-copy chapter-copy--row"><div><p class="chapter-index"><span>10</span><span data-copy data-pt="Como pretendo evoluir" data-en="How I plan to evolve it">Como pretendo evoluir</span></p><h2 id="future-title" class="chapter-title"><span data-copy data-pt="Eu quero validar" data-en="I want to validate">Eu quero validar</span><em data-copy data-pt="antes de escalar." data-en="before scaling.">antes de escalar.</em></h2></div><p class="chapter-lead" data-copy data-pt="O próximo passo não é adicionar recursos por ansiedade. É colocar o fluxo diante de agências reais, medir onde a decisão ainda trava e fortalecer a operação antes de ampliar o produto." data-en="The next step is not adding features out of anxiety. It is putting the flow in front of real agencies, learning where decisions still stall and strengthening operations before expanding the product.">O próximo passo não é adicionar recursos por ansiedade. É colocar o fluxo diante de agências reais, medir onde a decisão ainda trava e fortalecer a operação antes de ampliar o produto.</p></div>
+          <div class="future-path" data-future-path><i class="future-beam" aria-hidden="true"></i><button type="button" data-future-step aria-pressed="true"><span data-copy data-pt="Agora" data-en="Now">Agora</span><strong data-copy data-pt="Beta por convite" data-en="Invite-only beta">Beta por convite</strong><p data-copy data-pt="Validar linguagem, prioridades e uso recorrente." data-en="Validate language, priorities and recurring use.">Validar linguagem, prioridades e uso recorrente.</p></button><button type="button" data-future-step aria-pressed="false"><span data-copy data-pt="Depois" data-en="Next">Depois</span><strong data-copy data-pt="Operação confiável" data-en="Reliable operation">Operação confiável</strong><p data-copy data-pt="Observabilidade, limites, privacidade e backups." data-en="Observability, rate limits, privacy and backups.">Observabilidade, limites, privacidade e backups.</p></button><button type="button" data-future-step aria-pressed="false"><span data-copy data-pt="Então" data-en="Then">Então</span><strong data-copy data-pt="Crescimento sustentável" data-en="Sustainable growth">Crescimento sustentável</strong><p data-copy data-pt="Planos, cobrança, governança e custos monitorados." data-en="Plans, billing, governance and monitored costs.">Planos, cobrança, governança e custos monitorados.</p></button></div>
+        </div>
+      </section>
+
+      <section class="story-chapter chapter-closing theme-obsidian" id="convite" data-chapter data-nav-pt="Próximo case" data-nav-en="Next case" aria-labelledby="closing-title">
+        <div class="chapter-shell chapter-shell--split">
+          <div class="chapter-copy"><p class="chapter-index"><span>11</span><span data-copy data-pt="A história continua" data-en="The story continues">A história continua</span></p><h2 id="closing-title" class="chapter-title"><span data-copy data-pt="Eu levei a mesma clareza" data-en="I brought the same clarity">Eu levei a mesma clareza</span><em data-copy data-pt="para outro problema." data-en="to a different problem.">para outro problema.</em></h2><p class="chapter-lead" data-copy data-pt="No Workflow, eu organizei sinais para pequenas agências decidirem o próximo passo. No Nítido, transformei extratos financeiros em uma leitura privada, processada no próprio dispositivo e sem cadastro." data-en="In Workflow, I organized signals so small agencies could decide the next move. In Nítido, I turned financial statements into private, on-device insight with no account required.">No Workflow, eu organizei sinais para pequenas agências decidirem o próximo passo. No Nítido, transformei extratos financeiros em uma leitura privada, processada no próprio dispositivo e sem cadastro.</p><div class="chapter-actions"><a class="story-button story-button--primary" href="https://workflow-app-lac.vercel.app" target="_blank" rel="noopener noreferrer" data-aria-pt="Abrir a demo do Workflow" data-aria-en="Open the Workflow demo" aria-label="Abrir a demo do Workflow"><span data-copy data-pt="Abrir demo do Workflow" data-en="Open Workflow demo">Abrir demo do Workflow</span><b aria-hidden="true">↗</b></a><a class="story-button" href="https://github.com/Thalles714/workflow-app" target="_blank" rel="noopener noreferrer"><span data-copy data-pt="Examinar o código" data-en="Inspect the source">Examinar o código</span><b aria-hidden="true">↗</b></a></div></div>
+          <a class="next-case" href="/projects/nitido/" data-tilt-card data-aria-pt="Abrir o próximo case: Nítido" data-aria-en="Open the next case: Nítido" aria-label="Abrir o próximo case: Nítido"><span class="next-case-label" data-copy data-pt="Próximo case · 02" data-en="Next case · 02">Próximo case · 02</span><span class="next-case-title"><strong>Nítido</strong><small data-copy data-pt="Extratos viram respostas. Os dados ficam no dispositivo." data-en="Statements become answers. Data stays on-device.">Extratos viram respostas. Os dados ficam no dispositivo.</small></span><i aria-hidden="true">→</i></a>
+        </div>
+      </section>
+    </main>
+
+    <nav class="story-dock" data-story-dock aria-label="Navegação entre capítulos" data-aria-pt="Navegação entre capítulos" data-aria-en="Chapter navigation">
+      <div class="story-position"><span data-current-number>01</span><i>/</i><span>11</span><strong data-current-label>Criei</strong></div>
+      <ol class="story-rail">
+        <li><button type="button" data-story-target="abertura" aria-label="Ir para: O que eu criei"><span></span></button></li>
+        <li><button type="button" data-story-target="origem" aria-label="Ir para: Origem"><span></span></button></li>
+        <li><button type="button" data-story-target="ideia" aria-label="Ir para: Ideia"><span></span></button></li>
+        <li><button type="button" data-story-target="modelo" aria-label="Ir para: Modelo"><span></span></button></li>
+        <li><button type="button" data-story-target="experiencia" aria-label="Ir para: Experiência"><span></span></button></li>
+        <li><button type="button" data-story-target="decisoes" aria-label="Ir para: Decisões"><span></span></button></li>
+        <li><button type="button" data-story-target="construcao" aria-label="Ir para: Construção"><span></span></button></li>
+        <li><button type="button" data-story-target="protecao" aria-label="Ir para: Proteção"><span></span></button></li>
+        <li><button type="button" data-story-target="aprendizados" aria-label="Ir para: Aprendizados"><span></span></button></li>
+        <li><button type="button" data-story-target="futuro" aria-label="Ir para: Futuro"><span></span></button></li>
+        <li><button type="button" data-story-target="convite" aria-label="Ir para: Convite"><span></span></button></li>
+      </ol>
+      <div class="story-controls">
+        <button type="button" data-story-prev data-aria-pt="Capítulo anterior" data-aria-en="Previous chapter" aria-label="Capítulo anterior"><span aria-hidden="true">←</span></button>
+        <button type="button" data-story-next data-aria-pt="Próximo capítulo" data-aria-en="Next chapter" aria-label="Próximo capítulo"><span data-next-label data-copy data-pt="Próximo" data-en="Next">Próximo</span><b aria-hidden="true">→</b></button>
+      </div>
+    </nav>
+    <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-story-live></p>
+  </body>
+</html>

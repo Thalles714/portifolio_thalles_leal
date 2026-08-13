@@ -8,10 +8,12 @@
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "verify:social-preview": "npm run build && node scripts/verify-social-preview.mjs"
   },
   "dependencies": {
-    "gsap": "3.15.0"
+    "gsap": "3.15.0",
+    "simple-icons": "^16.27.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

@@ -1,8 +1,11 @@
 .DS_Store
 Thumbs.db
 .server-*.log
+.codex-vite-*.log
+debug.log
 node_modules/
 .vercel/
 dist/
+test-results/
 
 .vercel

@@ -17,7 +17,7 @@
   <meta property="og:title" content="Thalles Leal — Junior Front-end & Full-stack Developer">
   <meta property="og:description" content="Responsive web interfaces and applications built with React, Next.js and Node.js.">
   <meta property="og:image" content="https://portifoliothallesleal.vercel.app/assets/images/social/portfolio-og.png">
-  <meta property="og:image:width" content="1728">
+  <meta property="og:image:width" content="1731">
   <meta property="og:image:height" content="909">
   <meta property="og:image:alt" content="Thalles Leal — Front-end & Full-stack developer, Brazil / Remote.">
   <meta name="twitter:card" content="summary_large_image">
@@ -1243,24 +1243,98 @@
           </p>
         </div>
 
-        <div class="skill-matrix">
-          <div class="skill-row reveal">
-            <h3 data-i18n="skillInterface">Front-end &amp; product</h3>
-            <p>HTML5 · CSS3 · JavaScript · TypeScript · React · Next.js · Tailwind CSS · Vite · PWA · Design systems</p>
-          </div>
-          <div class="skill-row reveal">
-            <h3 data-i18n="skillSystems">Data &amp; architecture</h3>
-            <p>Node.js · REST APIs · Supabase · PostgreSQL · SQL · IndexedDB · Web Workers · Authentication · CRUD · Local-first</p>
-          </div>
-          <div class="skill-row reveal">
-            <h3 data-i18n="skillCraft">Quality &amp; testing</h3>
-            <p>Vitest · Playwright · E2E testing · Accessibility · Responsive design · Performance · Technical SEO</p>
-          </div>
-          <div class="skill-row reveal">
-            <h3 data-i18n="skillDelivery">Delivery &amp; security</h3>
-            <p>Git · GitHub · GitHub Actions · CI/CD · Vercel · Cloudflare Workers · Security headers · Web security</p>
-          </div>
-        </div>
+        <ul class="skill-matrix reveal" data-skill-rack data-i18n-aria-label="skillsRackLabel">
+          <li class="skill-tool" style="--skill-accent: #e34f26; --skill-index: 0">
+            <span class="skill-tool__icon" data-skill-icon="html5" aria-hidden="true"></span>
+            <strong>HTML5</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #663399; --skill-index: 1">
+            <span class="skill-tool__icon" data-skill-icon="css" aria-hidden="true"></span>
+            <strong>CSS</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #f7df1e; --skill-index: 2">
+            <span class="skill-tool__icon" data-skill-icon="javascript" aria-hidden="true"></span>
+            <strong>JavaScript</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #3178c6; --skill-index: 3">
+            <span class="skill-tool__icon" data-skill-icon="typescript" aria-hidden="true"></span>
+            <strong>TypeScript</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #61dafb; --skill-index: 4">
+            <span class="skill-tool__icon" data-skill-icon="react" aria-hidden="true"></span>
+            <strong>React</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #f1f0eb; --skill-index: 5">
+            <span class="skill-tool__icon" data-skill-icon="nextdotjs" aria-hidden="true"></span>
+            <strong>Next.js</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #06b6d4; --skill-index: 6">
+            <span class="skill-tool__icon" data-skill-icon="tailwindcss" aria-hidden="true"></span>
+            <strong>Tailwind CSS</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #bd34fe; --skill-index: 7">
+            <span class="skill-tool__icon" data-skill-icon="vite" aria-hidden="true"></span>
+            <strong>Vite</strong>
+            <span data-i18n="skillDomainInterface">Interface</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #5fa04e; --skill-index: 8">
+            <span class="skill-tool__icon" data-skill-icon="nodedotjs" aria-hidden="true"></span>
+            <strong>Node.js</strong>
+            <span data-i18n="skillDomainData">Data</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #3ecf8e; --skill-index: 9">
+            <span class="skill-tool__icon" data-skill-icon="supabase" aria-hidden="true"></span>
+            <strong>Supabase</strong>
+            <span data-i18n="skillDomainData">Data</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #4169e1; --skill-index: 10">
+            <span class="skill-tool__icon" data-skill-icon="postgresql" aria-hidden="true"></span>
+            <strong>PostgreSQL</strong>
+            <span data-i18n="skillDomainData">Data</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #6e9f18; --skill-index: 11">
+            <span class="skill-tool__icon" data-skill-icon="vitest" aria-hidden="true"></span>
+            <strong>Vitest</strong>
+            <span data-i18n="skillDomainQuality">Quality</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #45ba4b; --skill-index: 12">
+            <span class="skill-tool__icon" data-skill-icon="playwright" aria-hidden="true"></span>
+            <strong>Playwright</strong>
+            <span data-i18n="skillDomainQuality">Quality</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #f05032; --skill-index: 13">
+            <span class="skill-tool__icon" data-skill-icon="git" aria-hidden="true"></span>
+            <strong>Git</strong>
+            <span data-i18n="skillDomainDelivery">Delivery</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #f1f0eb; --skill-index: 14">
+            <span class="skill-tool__icon" data-skill-icon="github" aria-hidden="true"></span>
+            <strong>GitHub</strong>
+            <span data-i18n="skillDomainDelivery">Delivery</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #2088ff; --skill-index: 15">
+            <span class="skill-tool__icon" data-skill-icon="githubactions" aria-hidden="true"></span>
+            <strong>GitHub Actions</strong>
+            <span data-i18n="skillDomainDelivery">Delivery</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #f1f0eb; --skill-index: 16">
+            <span class="skill-tool__icon" data-skill-icon="vercel" aria-hidden="true"></span>
+            <strong>Vercel</strong>
+            <span data-i18n="skillDomainDelivery">Delivery</span>
+          </li>
+          <li class="skill-tool" style="--skill-accent: #f38020; --skill-index: 17">
+            <span class="skill-tool__icon" data-skill-icon="cloudflare" aria-hidden="true"></span>
+            <strong>Cloudflare</strong>
+            <span data-i18n="skillDomainDelivery">Delivery</span>
+          </li>
+        </ul>
       </div>
     </section>
 

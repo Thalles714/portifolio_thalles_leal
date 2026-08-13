@@ -10,7 +10,7 @@ Portfólio bilíngue e responsivo, desenvolvido como site estático com Vite e T
 ├── package.json
 ├── tsconfig.json
 ├── src/
-│   └── main.ts          # ponto único de inicialização
+│   └── main.ts          # inicialização da home
 ├── assets/
 │   ├── css/styles.css
 │   ├── fonts/
@@ -25,6 +25,7 @@ Portfólio bilíngue e responsivo, desenvolvido como site estático com Vite e T
 │       │   ├── three.module.js
 │       │   └── THREE-LICENSE
 │       ├── main.js
+│       ├── workflow-case.js # entrada do case horizontal Workflow
 │       └── dotted-surface.js
 └── robots.txt
 ```

@@ -24,6 +24,8 @@ test("language switch updates the document language", async ({ page }) => {
   await page.locator("#menu-toggle").click();
   await page.locator("[data-language-toggle]").click();
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
+  await expect(page.locator("[data-skill-rack]")).toHaveAttribute("aria-label", "Tecnologias usadas em projetos publicados");
+  await expect(page.locator("[data-skill-rack]")).toContainText("Qualidade");
 });
 
 test("project navigator and contact links are available", async ({ page }) => {
@@ -32,6 +34,22 @@ test("project navigator and contact links are available", async ({ page }) => {
   await expect(page.locator("[data-project-cover]")).toHaveCount(4);
   await expect(page.locator(".contact-channel--github")).toHaveAttribute("href", /github\.com/);
   await expect(page.locator(".contact-channel--linkedin")).toHaveAttribute("href", /linkedin\.com/);
+});
+
+test("skills section presents the shipped technology stack as an icon rack", async ({ page }) => {
+  await page.goto("/");
+  const rack = page.locator("[data-skill-rack]");
+  await rack.scrollIntoViewIfNeeded();
+
+  await expect(rack.locator(".skill-tool")).toHaveCount(18);
+  await expect(rack.locator(".skill-tool__icon--ready")).toHaveCount(17);
+  await expect(rack.locator(".skill-tool__icon--multicolor img")).toHaveCount(1);
+  await expect(rack).toContainText("TypeScript");
+  await expect(rack).toContainText("Playwright");
+  await expect(rack).toContainText("GitHub Actions");
+
+  const hasHorizontalOverflow = await rack.evaluate((element) => element.scrollWidth > element.clientWidth + 1);
+  expect(hasHorizontalOverflow).toBe(false);
 });
 
 test("orbital planet stays hidden through the profile-to-signal handoff", async ({ page }) => {
@@ -137,6 +155,7 @@ test("project cards only open after they have reached the center", async ({ page
   const navigator = page.locator("#project-navigator");
   await navigator.scrollIntoViewIfNeeded();
   const nitido = page.locator('[data-project-id="nitido"]');
+  await expect(nitido).toBeAttached();
 
   await page.evaluate(() => {
     const card = document.querySelector<HTMLAnchorElement>('[data-project-id="nitido"]');
