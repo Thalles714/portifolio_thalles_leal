@@ -42,7 +42,7 @@ export function createSignalMotion(section: HTMLElement, gsap: GsapLike | undefi
 
     if (reducedMotion || !gsap || !scrollTrigger) {
       section.classList.add("is-signal-active");
-      if (numberTrack) numberTrack.style.transform = "translate3d(0, -83.333333%, 0)";
+      if (numberTrack) numberTrack.style.transform = "translate3d(0, -80%, 0)";
       flowCard?.classList.add("is-flow-active");
       section.querySelectorAll<HTMLElement>(".signal-chart__bar span, .signal-year, .signal-stack li")
         .forEach((element) => {
@@ -59,8 +59,8 @@ export function createSignalMotion(section: HTMLElement, gsap: GsapLike | undefi
     if (numberTrack && projectsCard) {
       gsap.set(numberTrack, { yPercent: 0 });
       const timeline = gsap.timeline({ scrollTrigger: { trigger: projectsCard, start: "top 84%", once: true } });
-      for (let step = 1; step <= 5; step += 1) {
-        timeline.to(numberTrack, { yPercent: -(step * 100 / 6), duration: 0.115, ease: "power2.inOut" });
+      for (let step = 1; step <= 4; step += 1) {
+        timeline.to(numberTrack, { yPercent: -(step * 100 / 5), duration: 0.115, ease: "power2.inOut" });
       }
       motions.push(timeline);
     }

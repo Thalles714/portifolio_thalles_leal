@@ -1,5 +1,5 @@
 export type Project = {
-  id: "workflow" | "nitido" | "voe" | "solar" | "catalog";
+  id: "workflow" | "nitido" | "voe" | "solar";
   order: number;
   title: string;
   category: string;
@@ -12,6 +12,5 @@ export const projects: readonly Project[] = [
   { id: "workflow", order: 1, title: "Workflow", category: "SaaS / Operations", liveUrl: "https://workflow-app-lac.vercel.app", caseStudyUrl: "/projects/workflow/" },
   { id: "nitido", order: 2, title: "Nítido", category: "PWA / Local-first", liveUrl: "https://nitido.thallestleal.workers.dev", caseStudyUrl: "/projects/nitido/" },
   { id: "voe", order: 3, title: "Clínica Voe Alto", category: "Web / Healthcare", liveUrl: "http://clinicavoealto.com.br/" },
-  { id: "solar", order: 4, title: "Good Sollar", category: "Web / Solar energy", liveUrl: "https://www.goodsollar.com.br/" },
-  { id: "catalog", order: 5, title: "Catálogo para Corretores", category: "Platform / Commerce", liveUrl: "https://piaui-catalogo.vercel.app/" }
+  { id: "solar", order: 4, title: "Good Sollar", category: "Web / Solar energy", liveUrl: "https://www.goodsollar.com.br/" }
 ];
