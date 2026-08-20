@@ -9,10 +9,7 @@ export type ProjectCoverflowController = {
 export function createProjectCoverflow(root: HTMLElement): ProjectCoverflowController | null {
   const viewport = root.querySelector<HTMLElement>(".project-coverflow__viewport")!;
   const cards = Array.from(root.querySelectorAll<HTMLAnchorElement>("[data-project-cover]"));
-  const countLabel = root.querySelector<HTMLElement>(".project-coverflow__count")!;
   const pagination = root.querySelector<HTMLElement>(".project-coverflow__pagination")!;
-  const previous = root.querySelector<HTMLButtonElement>("[data-project-previous]")!;
-  const next = root.querySelector<HTMLButtonElement>("[data-project-next]")!;
   const activeTitle = root.querySelector<HTMLElement>("[data-project-active-title]")!;
   const activeCategory = root.querySelector<HTMLElement>("[data-project-active-category]")!;
   const activeFormat = root.querySelector<HTMLElement>("[data-project-active-format]")!;
@@ -20,7 +17,7 @@ export function createProjectCoverflow(root: HTMLElement): ProjectCoverflowContr
   const activeRoute = root.querySelector<HTMLElement>("[data-project-active-route]")!;
   const activeOpen = root.querySelector<HTMLAnchorElement>("[data-project-open]")!;
 
-  if (!viewport || !cards.length || !countLabel || !pagination || !previous || !next ||
+  if (!viewport || !cards.length || !pagination ||
     !activeTitle || !activeCategory || !activeFormat || !activeFocus || !activeRoute || !activeOpen) return null;
 
   cards.forEach((card, index) => {
@@ -130,10 +127,7 @@ export function createProjectCoverflow(root: HTMLElement): ProjectCoverflowContr
       card.style.transform = `translate3d(calc(-50% + ${x.toFixed(2)}px), ${y.toFixed(2)}px, 0) rotateY(${rotation.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
     });
 
-    countLabel.textContent = `${String(selected + 1).padStart(2, "0")} / ${String(cards.length).padStart(2, "0")}`;
     buttons.forEach((button, index) => button.setAttribute("aria-current", index === selected ? "true" : "false"));
-    previous.disabled = false;
-    next.disabled = false;
   }
 
   function stopAnimation(): void {
@@ -223,11 +217,6 @@ export function createProjectCoverflow(root: HTMLElement): ProjectCoverflowContr
 
   const cardClickHandlers = cards.map((_, index) => (event: MouseEvent) => onCardClick(event, index));
   cardClickHandlers.forEach((handler, index) => cards[index].addEventListener("click", handler));
-
-  const onPrevious = () => moveBy(-1);
-  const onNext = () => moveBy(1);
-  previous.addEventListener("click", onPrevious);
-  next.addEventListener("click", onNext);
 
   cards.forEach((_, index) => {
     const button = document.createElement("button");
@@ -363,8 +352,6 @@ export function createProjectCoverflow(root: HTMLElement): ProjectCoverflowContr
       stopAnimation();
       languageObserver.disconnect();
       cardClickHandlers.forEach((handler, index) => cards[index].removeEventListener("click", handler));
-      previous.removeEventListener("click", onPrevious);
-      next.removeEventListener("click", onNext);
       viewport.removeEventListener("keydown", onViewportKeydown);
       viewport.removeEventListener("pointerdown", onPointerDown);
       viewport.removeEventListener("pointermove", onPointerMove);

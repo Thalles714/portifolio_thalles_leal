@@ -8,6 +8,14 @@ test("loads the portfolio with its main landmark and title", async ({ page }) =>
   await expect(page.locator("h1")).toBeVisible();
 });
 
+test("orbital scene remains visible without decorative telemetry labels", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".planet-coordinate, .space-telemetry")).toHaveCount(0);
+  await expect.poll(async () => page.locator("#orbital-rig").evaluate((element) =>
+    Number.parseFloat(window.getComputedStyle(element).opacity)
+  )).toBeGreaterThan(0.1);
+});
+
 test("menu opens, closes with Escape and keeps navigation available", async ({ page }) => {
   await page.goto("/");
   const menu = page.locator("#menu-toggle");
@@ -181,22 +189,20 @@ test("project cards only open after they have reached the center", async ({ page
   await expect(page).toHaveURL(/\/projects\/nitido\/$/);
 });
 
-test("project navigator loops with controls", async ({ page }) => {
+test("project navigator loops with keyboard navigation", async ({ page }) => {
   await page.goto("/");
   const navigator = page.locator("#project-navigator");
   await navigator.scrollIntoViewIfNeeded();
 
   const workflow = page.locator('[data-project-id="workflow"]');
   const solar = page.locator('[data-project-id="solar"]');
-  const previous = page.locator("[data-project-previous]");
-  const next = page.locator("[data-project-next]");
+  const viewport = page.locator(".project-coverflow__viewport");
 
-  await expect(previous).toBeEnabled();
-  await previous.click();
+  await viewport.focus();
+  await page.keyboard.press("ArrowLeft");
   await expect(solar).toHaveAttribute("aria-current", "true");
-  await next.click();
+  await page.keyboard.press("ArrowRight");
   await expect(workflow).toHaveAttribute("aria-current", "true");
-
 });
 
 test("featured projects have focused case-study pages", async ({ page }) => {

@@ -989,7 +989,6 @@
       gap: clamp(1.5rem, 4vw, 5rem);
       align-items: end;
       padding-top: 1.25rem;
-      border-top: 1px solid var(--line);
     }
 
     .hero-intro {
@@ -1249,7 +1248,6 @@
       gap: 1.35rem;
       max-width: 31rem;
       padding-top: 1.2rem;
-      border-top: 1px solid rgba(241, 240, 235, 0.18);
       pointer-events: auto;
     }
 
@@ -1957,7 +1955,6 @@
       display: grid;
       gap: 1.5rem;
       padding-top: 1rem;
-      border-top: 1px solid var(--line);
     }
 
     .signal-intro p {
@@ -2259,7 +2256,6 @@
     .signal-map__copy {
       width: min(100%, 31rem);
       padding-top: 1.2rem;
-      border-top: 1px solid rgba(241, 240, 235, 0.18);
     }
 
     .signal-map__location {
@@ -2328,7 +2324,6 @@
       align-items: end;
       margin-top: 1.4rem;
       padding-top: 1rem;
-      border-top: 1px solid rgba(241, 240, 235, 0.16);
     }
 
     .signal-projects__bottom p {
@@ -2509,34 +2504,6 @@
       border-left: 1px solid rgba(241, 240, 235, 0.09);
     }
 
-    .signal-connector {
-      position: absolute;
-      top: calc(50% - 1px);
-      left: calc(58.333% - 0.8rem);
-      z-index: 6;
-      width: calc(8.333% + 1.6rem);
-      height: 1px;
-      overflow: hidden;
-      background: rgba(201, 223, 236, 0.12);
-      pointer-events: none;
-    }
-
-    .signal-connector::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, var(--ice), transparent);
-      transform: translateX(-100%);
-    }
-
-    .signal-section.is-signal-active .signal-connector::after {
-      animation: signal-scan 1.4s var(--ease-power) 1 forwards;
-    }
-
-    @keyframes signal-scan {
-      to { transform: translateX(100%); }
-    }
-
     .projects {
       display: block;
       min-height: auto;
@@ -2565,7 +2532,6 @@
       align-items: end;
       margin-top: clamp(2.5rem, 7vh, 5.5rem);
       padding-top: 1rem;
-      border-top: 1px solid var(--line);
     }
 
     .projects-summary p {
@@ -2582,8 +2548,6 @@
       margin: clamp(3rem, 8vh, 6rem) auto 0;
       padding: clamp(1rem, 2vw, 1.5rem) 0;
       overflow: hidden;
-      border-top: 1px solid rgba(201, 223, 236, 0.16);
-      border-bottom: 1px solid rgba(201, 223, 236, 0.16);
       isolation: isolate;
     }
 
@@ -2601,22 +2565,8 @@
       pointer-events: none;
     }
 
-    .project-coverflow__heading,
-    .project-coverflow__controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      color: var(--paper-muted);
-      font: 500 0.6rem/1 var(--utility);
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .project-coverflow__count { color: var(--ice); font-variant-numeric: tabular-nums; }
-
     .project-coverflow__viewport {
-      margin: 1.25rem 0 0;
+      margin: 0;
       padding: clamp(1.8rem, 4vw, 3rem) 0 0;
       overflow: hidden;
       outline: none;
@@ -2751,20 +2701,7 @@
       transition: color 220ms ease, border-color 220ms ease, background 220ms ease;
     }
 
-    .project-coverflow__hint {
-      width: 100%;
-      margin: clamp(1.35rem, 2.2vw, 1.8rem) 0 0;
-      color: var(--paper-muted);
-      font-size: 0.74rem;
-      line-height: 1.4;
-    }
-
-    .project-coverflow__controls { margin-top: 0.9rem; }
-    .project-coverflow__control { border: 1px solid rgba(201, 223, 236, 0.22); background: transparent; color: var(--ice); }
-    .project-coverflow__control { width: 3rem; height: 3rem; font-size: 1.1rem; cursor: pointer; transition: opacity 200ms ease, border-color 200ms ease, background 200ms ease; }
-    .project-coverflow__control:active { transform: scale(0.94); }
-    .project-coverflow__control:disabled { opacity: 0.22; cursor: default; }
-    .project-coverflow__pagination { display: flex; align-items: center; gap: 0.05rem; }
+    .project-coverflow__pagination { display: flex; align-items: center; justify-content: center; gap: 0.05rem; margin-top: 0.9rem; }
     .project-coverflow__pagination button { position: relative; width: 1.8rem; height: 2.3rem; padding: 0; border: 0; background: transparent; cursor: pointer; }
     .project-coverflow__pagination button::before { content: ""; position: absolute; top: 50%; left: 50%; width: 0.38rem; height: 0.38rem; border: 1px solid rgba(201, 223, 236, 0.34); border-radius: 999px; transform: translate(-50%, -50%); transition: width 240ms var(--ease-out), background 180ms ease, border-color 180ms ease; }
     .project-coverflow__pagination button[aria-current="true"]::before { width: 1.2rem; border-color: var(--ice); background: var(--ice); }
@@ -2772,8 +2709,7 @@
     @media (hover: hover) and (pointer: fine) {
       .project-coverflow__card:hover { border-color: rgba(201, 223, 236, 0.58); }
       .project-coverflow__open:hover,
-      .project-coverflow__open:focus-visible,
-      .project-coverflow__control:not(:disabled):hover { border-color: var(--ice); background: rgba(201, 223, 236, 0.08); }
+      .project-coverflow__open:focus-visible { border-color: var(--ice); background: rgba(201, 223, 236, 0.08); }
     }
 
     .project {
@@ -3415,8 +3351,6 @@
       grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
       gap: clamp(2.5rem, 8vw, 8rem);
       padding: clamp(2rem, 5vw, 4.5rem) 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
       align-items: end;
     }
 
@@ -3987,10 +3921,6 @@
         grid-column: span 6;
       }
 
-      .signal-connector {
-        display: none;
-      }
-
       .project-shell {
         grid-template-columns: 4rem minmax(0, 1fr);
       }
@@ -4394,10 +4324,6 @@
 
       .project-coverflow__selection {
         margin-top: 1.6rem;
-      }
-
-      .project-coverflow__hint {
-        max-width: 28rem;
       }
 
       .project {
@@ -4841,8 +4767,7 @@
 
       .signal-pulse::before,
       .signal-pulse::after,
-      .profile-handoff__pulse,
-      .signal-section.is-signal-active .signal-connector::after {
+      .profile-handoff__pulse {
         animation: none;
       }
 

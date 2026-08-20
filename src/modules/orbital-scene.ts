@@ -11,9 +11,9 @@ export function createOrbitalScene(): OrbitalSceneController | null {
   const rig = document.querySelector<HTMLElement>("#orbital-rig") as HTMLElement;
   const planet = document.querySelector<HTMLElement>("#planet-core") as HTMLElement;
   const rings = document.querySelector<HTMLElement>("#orbit-group") as HTMLElement;
-  const coordinate = document.querySelector<HTMLElement>(".planet-coordinate") as HTMLElement;
+  const coordinate = document.querySelector<HTMLElement>(".planet-coordinate");
   const hero = document.querySelector<HTMLElement>("#home") as HTMLElement;
-  if (!rig || !planet || !rings || !coordinate || !hero) return null;
+  if (!rig || !planet || !rings || !hero) return null;
 
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const pointerMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -53,7 +53,10 @@ export function createOrbitalScene(): OrbitalSceneController | null {
     else { const response = width <= 800 ? 0.28 : 0.36; const omega = 4.6 / response; const displacement = cursor - target; const decay = Math.exp(-omega * delta); cursor = target + (displacement * (1 + omega * delta) + velocity * delta) * decay; velocity = (velocity * (1 - omega * delta) - displacement * omega * omega * delta) * decay; }
     const current = sample(cursor), mobile = width <= 800, visualScroll = cursor - height * 0.5;
     const exit = smoothstep(clamp((visualScroll - exitStart) / Math.max(1, exitEnd - exitStart), 0, 1));
-    coordinate.style.opacity = String(1 - exit); coordinate.style.transform = motion.matches ? "none" : `translate3d(${(exit * 18).toFixed(2)}px,${(exit * -5).toFixed(2)}px,0)`;
+    if (coordinate) {
+      coordinate.style.opacity = String(1 - exit);
+      coordinate.style.transform = motion.matches ? "none" : `translate3d(${(exit * 18).toFixed(2)}px,${(exit * -5).toFixed(2)}px,0)`;
+    }
     if (motion.matches) { rig.style.transform = `translate3d(-50%, -50%, 0) scale(${mobile ? 0.74 : 0.82})`; rig.style.opacity = String(Math.min(current.opacity, mobile ? 0.34 : 0.46)); rings.style.opacity = String(Math.min(current.rings, 0.45)); rings.style.transform = "rotateX(5deg) rotateY(-7deg)"; planet.style.transform = "translateZ(1px)"; return; }
     const blend = 1 - Math.exp(-7.5 * delta); pointer.x += (pointer.tx - pointer.x) * blend; pointer.y += (pointer.ty - pointer.y) * blend;
     const x = current.x * width * 0.01 * (mobile ? 0.34 : 1) + pointer.x, y = current.y * height * 0.01 * (mobile ? 0.45 : 1) + pointer.y;
