@@ -2,6 +2,10 @@
 
 Portfólio bilíngue e responsivo, desenvolvido como site estático com Vite e TypeScript.
 
+**[Abrir portfólio](https://portifoliothallesleal.vercel.app/)** · [LinkedIn](https://www.linkedin.com/in/thalles-leal-tavares-9b0404294/) · [Sifego](https://sifego.studio/)
+
+Desenvolvedor Front-end / Full-stack Júnior, com entregas para clientes e projetos independentes. ADS na UNIP em andamento, com conclusão prevista para o fim do primeiro semestre de 2027.
+
 ## Estrutura
 
 ```text
